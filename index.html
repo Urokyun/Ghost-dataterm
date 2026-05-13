@@ -1155,10 +1155,6 @@ function saveJsonbinConfig() {
   document.getElementById('loading').style.display = 'flex';
   const loaded = await dbLoad();
 
-  // DEBUG — remova depois que funcionar
-  console.log('JSONBin carregado:', loaded);
-  console.log('DB.passwords:', DB.passwords);
-
   document.getElementById('loading').style.display = 'none';
   setSaveStatus(loaded ? 'DB CONECTADO' : '[ CONFIGURE JSONBIN NO GM CONSOLE ]');
   updateClock();
