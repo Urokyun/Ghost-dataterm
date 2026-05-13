@@ -352,15 +352,15 @@ footer a:hover{color:var(--c-text)}
 <div id="loginScreen">
   <div class="login-box">
     <div class="login-logo">DATA<span>TERM</span>™</div>
-    <div class="login-sub">MONTREAL // 2045 // BELL-QUÉBECOR<span class="login-cursor">_</span></div>
+    <div class="login-sub">NIGHT CITY // 2021 // NIGHTCORP<span class="login-cursor">_</span></div>
     <label class="login-label">Código de acesso</label>
     <input type="password" id="loginInput" placeholder="••••••••••••" maxlength="32"
            onkeydown="if(event.key==='Enter')doLogin()">
     <button class="login-btn" onclick="doLogin()">AUTENTICAR</button>
     <div class="login-err" id="loginErr"></div>
     <div class="login-hint">
-      Terminal #0952 // Peel/Notre-Dame<br>
-      Operado por BELL-QUÉBECOR<br>
+      Terminal #0854 // Peel/PARA-DOX<br>
+      Operado por NIGHTCORP<br>
       DATATERM-OS v4.232 © Euro Business Machines
     </div>
   </div>
@@ -646,11 +646,7 @@ footer a:hover{color:var(--c-text)}
   <!-- FOOTER -->
   <footer>
     <div>
-      DATATERM™ © 2045 Bell-Québecor &nbsp;·&nbsp;
-      <a href="#" onclick="return false">Sobre o projeto</a>
-    </div>
-    <div style="color:var(--c-faint)">
-      Fan project — Cyberpunk 2020/Red — R. Talsorian Games
+      DATATERM™ © 2021 NIGHTCORP &nbsp;·&nbsp;
     </div>
   </footer>
 
@@ -663,7 +659,7 @@ footer a:hover{color:var(--c-text)}
 <div id="newsModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:800;align-items:center;justify-content:center">
   <div style="background:var(--c-surface);border:1px solid #ef9f2744;padding:20px;width:90%;max-width:460px">
     <div class="gm-card-title">// NOVA NOTÍCIA //</div>
-    <div class="field"><label>Data/Hora</label><input id="nDate" placeholder="14 Jan 2045 // 06:00"></div>
+    <div class="field"><label>Data/Hora</label><input id="nDate" placeholder="14 Jan 2021 // 06:00"></div>
     <div class="field"><label>Manchete (MAIÚSCULO)</label><input id="nHead" placeholder="CORPO ENCONTRADO EM VILLERAY"></div>
     <div class="field"><label>Sub-manchete</label><input id="nSub" placeholder="Detalhes adicionais..."></div>
     <div style="display:flex;gap:8px;margin-top:4px">
@@ -700,7 +696,7 @@ const ATTRS = ['INT','REF','DEX','TECH','COOL','WILL','LUCK','MOVE','BODY','EMP'
 let DB = {
   passwords: { gm: CONFIG.defaultGmPw, player: CONFIG.defaultPlayerPw, gmName: CONFIG.gmName },
   pubs: [
-    {num:'P01',title:'The Montréal Update',    desc:'O screamsheet mais vendido da cidade, pela Bell-Québecor.',status:'active'},
+    {num:'P01',title:'The Montréal Update',    desc:'O screamsheet mais vendido da cidade, pela NIGHTCORP.',status:'active'},
     {num:'P02',title:"Gunner's Arsenal",        desc:'Lista de armas e homebrew para Cyberpunk Red.',         status:'active'},
     {num:'P03',title:'Clash Club Confidential', desc:'Banco de NPCs inimigos para uso dos árbitros.',         status:'locked'},
     {num:'P04',title:'Random Tables',           desc:'Tabelas aleatórias de NPCs, locais e cenários.',        status:'active'},
@@ -709,10 +705,10 @@ let DB = {
     {num:'P07',title:'Public Database_',        desc:'Cenário de Montréal para Cyberpunk Red/2020.',          status:'active'},
   ],
   news: [
-    {date:'14 Jan 2045 // 06:00', headline:'EXECUTIVA DA KIROSHI SEQUESTRADA', sub:''},
-    {date:'14 Jan 2045 // 08:00', headline:'BIOTECHNICA ADIA LANÇAMENTO DA SECURICINE', sub:'O novo combate-drug chegará um mês atrasado.'},
-    {date:'25 Fev 2045 // 06:00', headline:'CIBERPSICOSE EM VILLE-MARIE — 7 MORTOS', sub:'12 feridos segundo relatório da SPVM.'},
-    {date:'01 Mar 2045 // 05:00', headline:'ZETATECH REVELA NOVIDADES DE 2045', sub:'Novos chipsets de habilidade serão adicionados ao portfólio.'},
+    {date:'14 Jan 2021 // 06:00', headline:'EXECUTIVA DA KIROSHI SEQUESTRADA', sub:''},
+    {date:'14 Jan 2021 // 08:00', headline:'BIOTECHNICA ADIA LANÇAMENTO DA SECURICINE', sub:'O novo combate-drug chegará um mês atrasado.'},
+    {date:'25 Fev 2021 // 06:00', headline:'CIBERPSICOSE EM VILLE-MARIE — 7 MORTOS', sub:'12 feridos segundo relatório da SPVM.'},
+    {date:'01 Mar 2021 // 05:00', headline:'ZETATECH REVELA NOVIDADES DE 2021', sub:'Novos chipsets de habilidade serão adicionados ao portfólio.'},
   ],
   chars: {},
 };
