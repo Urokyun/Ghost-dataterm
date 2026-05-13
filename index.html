@@ -819,8 +819,11 @@ function updateClock() {
 ══════════════════════════════════════════ */
 function doLogin() {
   const pw = document.getElementById('loginInput').value.trim().toUpperCase();
-  const gmPw = (DB.passwords.gm || CONFIG.defaultGmPw).toUpperCase();
-  const plPw = (DB.passwords.player || CONFIG.defaultPlayerPw).toUpperCase();
+
+  // Usa senhas do DB se carregadas, senão usa os defaults do CONFIG
+  const gmPw = (DB.passwords?.gm || CONFIG.defaultGmPw).toUpperCase();
+  const plPw = (DB.passwords?.player || CONFIG.defaultPlayerPw).toUpperCase();
+
   if (pw === gmPw) {
     role = 'gm';
   } else if (pw === plPw) {
@@ -830,6 +833,7 @@ function doLogin() {
     document.getElementById('loginInput').value = '';
     return;
   }
+
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('app').style.display = 'flex';
   applyRole();
@@ -1149,9 +1153,12 @@ function saveJsonbinConfig() {
 ══════════════════════════════════════════ */
 (async function init() {
   document.getElementById('loading').style.display = 'flex';
-  // Carrega config JSONBin do localStorage (já feito acima)
-  // Tenta carregar DB do JSONBin
   const loaded = await dbLoad();
+
+  // DEBUG — remova depois que funcionar
+  console.log('JSONBin carregado:', loaded);
+  console.log('DB.passwords:', DB.passwords);
+
   document.getElementById('loading').style.display = 'none';
   setSaveStatus(loaded ? 'DB CONECTADO' : '[ CONFIGURE JSONBIN NO GM CONSOLE ]');
   updateClock();
