@@ -3,340 +3,195 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DATATERM™ — Night City, 2021 </title>
+<title>DATATERM™ — Montréal 2045</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap">
 <style>
-/* ── RESET ── */
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;background:#02040a}
-
-/* ── CSS VARS ── */
 :root{
-  --c-bg:       #02040a;
-  --c-surface:  #070c18;
-  --c-panel:    #030609;
-  --c-border:   #1a3a5c;
-  --c-border2:  #0d2035;
-  --c-text:     #7ecfff;
-  --c-muted:    #4a8ab5;
-  --c-dim:      #2a607a;
-  --c-faint:    #0d2035;
-  --c-green:    #1d9e75;
-  --c-yellow:   #ef9f27;
-  --c-red:      #e24b4a;
-  --c-blue:     #378add;
-  --c-mono:     'Share Tech Mono', monospace;
-  --c-head:     'Orbitron', monospace;
+  --bg:#02040a;--surface:#070c18;--panel:#030609;
+  --border:#1a3a5c;--border2:#0d2035;
+  --text:#7ecfff;--muted:#4a8ab5;--dim:#2a607a;--faint:#0d2035;
+  --green:#1d9e75;--yellow:#ef9f27;--red:#e24b4a;--blue:#378add;
+  --mono:'Share Tech Mono',monospace;--head:'Orbitron',monospace;
 }
-
-/* ── SCANLINES ── */
-body::after{
-  content:'';pointer-events:none;position:fixed;inset:0;
-  background:repeating-linear-gradient(to bottom,transparent 0,transparent 2px,rgba(0,0,0,.13) 2px,rgba(0,0,0,.13) 4px);
-  z-index:9999;
-}
-
-/* ── TYPOGRAPHY ── */
-body{font-family:var(--c-mono);font-size:13px;color:var(--c-text)}
-h1,h2,h3{font-family:var(--c-head)}
-
-/* ── SCROLLBAR ── */
+body::after{content:'';pointer-events:none;position:fixed;inset:0;
+  background:repeating-linear-gradient(to bottom,transparent 0,transparent 2px,rgba(0,0,0,.13) 2px,rgba(0,0,0,.13) 4px);z-index:9999}
+body{font-family:var(--mono);font-size:13px;color:var(--text)}
 ::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:var(--c-panel)}
-::-webkit-scrollbar-thumb{background:var(--c-border);border-radius:3px}
+::-webkit-scrollbar-track{background:var(--panel)}
+::-webkit-scrollbar-thumb{background:var(--border)}
 
-/* ════════════════════════════════════
-   LOGIN SCREEN
-════════════════════════════════════ */
-#loginScreen{
-  position:fixed;inset:0;background:var(--c-bg);
-  display:flex;align-items:center;justify-content:center;z-index:1000;
-}
-.login-box{
-  width:360px;border:1px solid var(--c-border);background:var(--c-surface);padding:32px 28px;
-  text-align:center;
-}
-.login-logo{font-family:var(--c-head);font-size:22px;letter-spacing:6px;color:var(--c-text);margin-bottom:4px}
-.login-logo span{color:var(--c-blue)}
-.login-sub{font-size:10px;color:var(--c-dim);letter-spacing:3px;margin-bottom:28px}
-.login-label{font-size:9px;color:var(--c-dim);letter-spacing:3px;text-align:left;margin-bottom:4px;display:block;text-transform:uppercase}
-.login-box input{
-  width:100%;background:var(--c-panel);border:1px solid var(--c-border);
-  color:var(--c-text);font-family:var(--c-mono);font-size:13px;
-  padding:10px 12px;margin-bottom:12px;letter-spacing:2px;
-}
-.login-box input:focus{outline:none;border-color:var(--c-text)}
-.login-box input::placeholder{color:var(--c-faint);letter-spacing:1px}
-.login-btn{
-  width:100%;background:transparent;border:1px solid var(--c-blue);
-  color:var(--c-blue);font-family:var(--c-mono);font-size:11px;
-  padding:10px;cursor:pointer;letter-spacing:3px;text-transform:uppercase;
-  transition:all .15s;
-}
+/* LOGIN */
+#loginScreen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:1000}
+.login-box{width:360px;border:1px solid var(--border);background:var(--surface);padding:32px 28px;text-align:center}
+.login-logo{font-family:var(--head);font-size:22px;letter-spacing:6px;color:var(--text);margin-bottom:4px}
+.login-logo span{color:var(--blue)}
+.login-sub{font-size:10px;color:var(--dim);letter-spacing:3px;margin-bottom:28px}
+.login-label{font-size:9px;color:var(--dim);letter-spacing:3px;text-align:left;margin-bottom:4px;display:block;text-transform:uppercase}
+.login-box input{width:100%;background:var(--panel);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:13px;padding:10px 12px;margin-bottom:12px;letter-spacing:2px}
+.login-box input:focus{outline:none;border-color:var(--text)}
+.login-box input::placeholder{color:var(--faint)}
+.login-btn{width:100%;background:transparent;border:1px solid var(--blue);color:var(--blue);font-family:var(--mono);font-size:11px;padding:10px;cursor:pointer;letter-spacing:3px;text-transform:uppercase}
 .login-btn:hover{background:#071428}
-.login-err{font-size:10px;color:var(--c-red);margin-top:8px;letter-spacing:1px;min-height:16px}
-.login-hint{font-size:9px;color:var(--c-faint);margin-top:16px;line-height:1.8;letter-spacing:1px}
-.login-cursor{animation:blink 1s step-end infinite}
+.login-err{font-size:10px;color:var(--red);margin-top:8px;letter-spacing:1px;min-height:16px}
+.login-hint{font-size:9px;color:var(--faint);margin-top:16px;line-height:1.8;letter-spacing:1px}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-
-/* ════════════════════════════════════
-   APP SHELL
-════════════════════════════════════ */
-#app{display:none;flex-direction:column;min-height:100vh}
-
-/* ── TOP BAR ── */
-.topbar{
-  background:var(--c-surface);border-bottom:1px solid var(--c-border);
-  padding:10px 20px;display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:100;
-}
-.topbar-left{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.topbar-logo{font-family:var(--c-head);font-size:14px;letter-spacing:4px;color:var(--c-text)}
-.topbar-logo span{color:var(--c-blue)}
-.topbar-meta{font-size:10px;color:var(--c-dim);letter-spacing:1px;line-height:1.6}
-.topbar-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.role-badge{
-  font-size:9px;padding:3px 10px;letter-spacing:2px;text-transform:uppercase;
-  border:1px solid;
-}
-.role-badge.gm{border-color:#ef9f27;color:#ef9f27;background:#0d0800}
-.role-badge.player{border-color:var(--c-green);color:var(--c-green);background:#03100a}
-
-/* ── STATUS BAR ── */
-.statusbar{
-  background:var(--c-panel);border-bottom:1px solid var(--c-faint);
-  padding:5px 20px;display:flex;gap:24px;font-size:9px;color:var(--c-dim);
-  letter-spacing:1px;flex-wrap:wrap;
-}
-.statusbar span{color:var(--c-muted)}
-.dot-live{width:6px;height:6px;border-radius:50%;background:var(--c-green);display:inline-block;margin-right:5px;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.login-cursor{animation:blink 1s step-end infinite}
 
-/* ── NAV TABS ── */
-.navtabs{
-  background:var(--c-surface);border-bottom:1px solid var(--c-border);
-  padding:0 20px;display:flex;gap:0;overflow-x:auto;
-}
-.navtab{
-  padding:10px 18px;font-size:10px;letter-spacing:2px;color:var(--c-dim);
-  cursor:pointer;text-transform:uppercase;border-bottom:2px solid transparent;
-  white-space:nowrap;transition:color .15s;
-}
-.navtab:hover{color:var(--c-muted)}
-.navtab.active{color:var(--c-text);border-bottom-color:var(--c-blue)}
-.navtab.gm-tab{color:#ef9f2766}
-.navtab.gm-tab.active{color:#ef9f27;border-bottom-color:#ef9f27}
-
-/* ── MAIN CONTENT ── */
+/* APP SHELL */
+#app{display:none;flex-direction:column;min-height:100vh}
+.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:100}
+.topbar-logo{font-family:var(--head);font-size:14px;letter-spacing:4px}
+.topbar-logo span{color:var(--blue)}
+.topbar-meta{font-size:10px;color:var(--dim);line-height:1.6}
+.topbar-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.role-badge{font-size:9px;padding:3px 10px;letter-spacing:2px;text-transform:uppercase;border:1px solid}
+.role-badge.gm    {border-color:var(--yellow);color:var(--yellow);background:#0d0800}
+.role-badge.char  {border-color:var(--blue);color:var(--blue);background:#020810}
+.role-badge.player{border-color:var(--green);color:var(--green);background:#03100a}
+.statusbar{background:var(--panel);border-bottom:1px solid var(--faint);padding:5px 20px;display:flex;gap:24px;font-size:9px;color:var(--dim);letter-spacing:1px;flex-wrap:wrap}
+.statusbar span{color:var(--muted)}
+.dot-live{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;margin-right:5px;animation:pulse 2s infinite}
+.navtabs{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20px;display:flex;overflow-x:auto}
+.navtab{padding:10px 18px;font-size:10px;letter-spacing:2px;color:var(--dim);cursor:pointer;text-transform:uppercase;border-bottom:2px solid transparent;white-space:nowrap}
+.navtab:hover{color:var(--muted)}
+.navtab.active{color:var(--text);border-bottom-color:var(--blue)}
+.navtab.gm-tab{color:#ef9f2733}.navtab.gm-tab:hover{color:#ef9f2799}
+.navtab.gm-tab.active{color:var(--yellow);border-bottom-color:var(--yellow)}
 .main{flex:1;padding:20px;max-width:1100px;width:100%;margin:0 auto}
-.page{display:none}
-.page.active{display:block}
+.page{display:none}.page.active{display:block}
+.sec-label{font-size:9px;color:var(--dim);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--faint)}
 
-/* ── SECTION LABEL ── */
-.sec-label{
-  font-size:9px;color:var(--c-dim);letter-spacing:3px;text-transform:uppercase;
-  margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--c-faint);
-}
+/* BUTTONS */
+.btn{background:transparent;border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:10px;padding:5px 14px;cursor:pointer;text-transform:uppercase;letter-spacing:1px}
+.btn:hover{border-color:var(--text);background:#0a1220}
+.btn.ok{border-color:var(--green);color:var(--green)}.btn.ok:hover{background:#03100a}
+.btn.danger{border-color:var(--red);color:var(--red)}.btn.danger:hover{background:#1a0808}
+.btn.blue{border-color:var(--blue);color:var(--blue)}.btn.blue:hover{background:#071428}
+.btn.yellow{border-color:var(--yellow);color:var(--yellow)}.btn.yellow:hover{background:#0d0800}
 
-/* ── BUTTONS ── */
-.btn{
-  background:transparent;border:1px solid var(--c-border);color:var(--c-text);
-  font-family:var(--c-mono);font-size:10px;padding:5px 14px;cursor:pointer;
-  text-transform:uppercase;letter-spacing:1px;transition:all .15s;
-}
-.btn:hover{border-color:var(--c-text);background:#0a1220}
-.btn.ok{border-color:var(--c-green);color:var(--c-green)}
-.btn.ok:hover{background:#03100a}
-.btn.danger{border-color:var(--c-red);color:var(--c-red)}
-.btn.danger:hover{background:#1a0808}
-.btn.blue{border-color:var(--c-blue);color:var(--c-blue)}
-.btn.blue:hover{background:#071428}
-.btn.yellow{border-color:var(--c-yellow);color:var(--c-yellow)}
-.btn.yellow:hover{background:#0d0800}
-.btn:disabled{opacity:.35;cursor:not-allowed}
-
-/* ── FORMS ── */
+/* FORMS */
 .field{margin-bottom:10px}
-.field label{font-size:9px;color:var(--c-dim);letter-spacing:2px;display:block;margin-bottom:3px;text-transform:uppercase}
-.field input,.field select,.field textarea{
-  background:var(--c-panel);border:1px solid var(--c-border);color:var(--c-text);
-  font-family:var(--c-mono);font-size:12px;padding:6px 10px;width:100%;
-}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--c-text)}
-.field input::placeholder{color:var(--c-faint)}
-.field select option{background:var(--c-surface)}
+.field label{font-size:9px;color:var(--dim);letter-spacing:2px;display:block;margin-bottom:3px;text-transform:uppercase}
+.field input,.field select,.field textarea{background:var(--panel);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:6px 10px;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--text)}
+.field input::placeholder{color:var(--faint)}
+.field select option{background:var(--surface)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.form-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 .attrs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:6px}
+.divider{border:none;border-top:1px solid var(--faint);margin:14px 0}
 
-/* ── TOAST ── */
-#toast{
-  position:fixed;bottom:20px;right:20px;z-index:9998;
-  font-size:11px;padding:8px 16px;letter-spacing:1px;
-  border:1px solid;opacity:0;transition:opacity .3s;pointer-events:none;
-}
-#toast.ok{background:#031a0f;border-color:var(--c-green);color:var(--c-green)}
-#toast.err{background:#1a0808;border-color:var(--c-red);color:var(--c-red)}
+/* TOAST */
+#toast{position:fixed;bottom:20px;right:20px;z-index:9998;font-size:11px;padding:8px 16px;letter-spacing:1px;border:1px solid;opacity:0;transition:opacity .3s;pointer-events:none}
+#toast.ok{background:#031a0f;border-color:var(--green);color:var(--green)}
+#toast.err{background:#1a0808;border-color:var(--red);color:var(--red)}
 #toast.show{opacity:1}
 
-/* ════════════════════════════════════
-   PÁGINA: TERMINAL (HOME)
-════════════════════════════════════ */
-.hero{text-align:center;padding:28px 0 20px;border-bottom:1px solid var(--c-faint);margin-bottom:20px}
-.hero-title{font-family:var(--c-head);font-size:26px;letter-spacing:6px;color:var(--c-text)}
-.hero-title span{color:var(--c-blue)}
-.hero-tagline{font-size:11px;color:var(--c-dim);letter-spacing:2px;margin:6px 0 4px}
-.hero-update{font-size:10px;color:var(--c-faint)}
-
+/* TERMINAL PAGE */
+.hero{text-align:center;padding:28px 0 20px;border-bottom:1px solid var(--faint);margin-bottom:20px}
+.hero-title{font-family:var(--head);font-size:26px;letter-spacing:6px}
+.hero-title span{color:var(--blue)}
+.hero-tagline{font-size:11px;color:var(--dim);letter-spacing:2px;margin:6px 0 4px}
+.hero-update{font-size:10px;color:var(--faint)}
 .pub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin-bottom:20px}
-.pub-card{
-  background:var(--c-surface);border:1px solid var(--c-border);
-  padding:12px 14px;cursor:pointer;transition:border-color .15s;
-}
-.pub-card:hover{border-color:var(--c-text);background:#0a1220}
-.pub-card.locked{opacity:.45;cursor:default}
-.pub-num{font-size:9px;color:var(--c-dim);letter-spacing:1px;margin-bottom:3px}
-.pub-title{font-size:13px;color:var(--c-text);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
-.pub-desc{font-size:10px;color:var(--c-muted);line-height:1.5}
+.pub-card{background:var(--surface);border:1px solid var(--border);padding:12px 14px;transition:border-color .15s}
+.pub-card.unlocked{cursor:pointer}.pub-card.unlocked:hover{border-color:var(--text);background:#0a1220}
+.pub-card.locked{opacity:.4}
+.pub-card.exclusive{border-color:#ef9f2744}
+.pub-num{font-size:9px;color:var(--dim);letter-spacing:1px;margin-bottom:3px}
+.pub-title{font-size:13px;color:var(--text);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.pub-desc{font-size:10px;color:var(--muted);line-height:1.5}
+.pub-exclusive-tag{font-size:9px;color:var(--yellow);letter-spacing:1px;margin-top:4px}
 
-/* ════════════════════════════════════
-   PÁGINA: NOTÍCIAS
-════════════════════════════════════ */
-.news-controls{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
-.news-list{}
-.news-item{
-  display:grid;grid-template-columns:170px 1fr auto;gap:12px;align-items:start;
-  padding:10px 0;border-bottom:1px solid var(--c-faint);
-}
+/* NEWS */
+.news-badge{font-size:9px;padding:2px 8px;letter-spacing:2px;background:var(--red);color:#fff;animation:blink 1.2s step-end infinite;white-space:nowrap}
+.news-item{display:grid;grid-template-columns:170px 1fr auto;gap:12px;align-items:start;padding:10px 0;border-bottom:1px solid var(--faint)}
 .news-item:last-child{border-bottom:none}
-.news-date{font-size:10px;color:var(--c-dim);letter-spacing:1px;padding-top:1px}
-.news-headline{font-size:12px;color:var(--c-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
-.news-sub{font-size:11px;color:var(--c-muted)}
-.news-badge{
-  font-size:9px;padding:2px 8px;letter-spacing:2px;
-  background:var(--c-red);color:#fff;animation:blink 1.2s step-end infinite;
-  align-self:start;white-space:nowrap;
-}
+.news-date{font-size:10px;color:var(--dim);letter-spacing:1px}
+.news-headline{font-size:12px;color:var(--text);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.news-sub{font-size:11px;color:var(--muted)}
 
-/* ════════════════════════════════════
-   PÁGINA: FICHAS
-════════════════════════════════════ */
+/* ROSTER */
 .roster-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:8px;margin-bottom:14px}
-.char-card{
-  background:var(--c-surface);border:1px solid var(--c-border);
-  padding:10px 12px;cursor:pointer;transition:border-color .15s;
-}
-.char-card:hover{border-color:var(--c-text);background:#0a1220}
-.char-card.active{border-color:var(--c-blue);background:#071428}
-.char-role{font-size:9px;color:var(--c-dim);letter-spacing:1px;margin-bottom:2px}
-.char-name{font-size:14px;color:var(--c-text);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.hp-bar{height:4px;background:var(--c-faint);margin-bottom:6px}
+.char-card{background:var(--surface);border:1px solid var(--border);padding:10px 12px;cursor:pointer}
+.char-card:hover{border-color:var(--text);background:#0a1220}
+.char-card.active{border-color:var(--blue);background:#071428}
+.char-role{font-size:9px;color:var(--dim);letter-spacing:1px;margin-bottom:2px}
+.char-name{font-size:14px;color:var(--text);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.hp-bar{height:4px;background:var(--faint);margin-bottom:6px}
 .hp-fill{height:100%;transition:width .3s}
-.hp-fill.ok{background:var(--c-green)}
-.hp-fill.warn{background:var(--c-yellow)}
-.hp-fill.crit{background:var(--c-red)}
-.char-stats-row{display:flex;gap:8px;font-size:10px;color:var(--c-muted)}
-.char-stats-row span{color:var(--c-text)}
+.hp-fill.ok{background:var(--green)}.hp-fill.warn{background:var(--yellow)}.hp-fill.crit{background:var(--red)}
+.char-stats-row{display:flex;gap:8px;font-size:10px;color:var(--muted)}
+.char-stats-row span{color:var(--text)}
 
 /* SHEET */
-.sheet{background:var(--c-surface);border:1px solid var(--c-border);padding:16px}
+.sheet{background:var(--surface);border:1px solid var(--border);padding:16px}
 .sheet-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap}
-.sheet-name{font-family:var(--c-head);font-size:20px;letter-spacing:2px;color:var(--c-text)}
-.sheet-role-line{font-size:10px;color:var(--c-blue);letter-spacing:3px;margin-top:3px}
-.sheet-player-line{font-size:10px;color:var(--c-dim);margin-top:2px}
-.sheet-actions{display:flex;gap:6px;flex-wrap:wrap}
-.sheet-tabs{display:flex;gap:0;margin-bottom:14px;border-bottom:1px solid var(--c-border)}
-.sheet-tab{padding:6px 14px;font-size:10px;letter-spacing:2px;color:var(--c-dim);cursor:pointer;text-transform:uppercase;border-bottom:2px solid transparent}
-.sheet-tab:hover{color:var(--c-muted)}
-.sheet-tab.active{color:var(--c-text);border-bottom-color:var(--c-blue)}
-.sheet-panel{display:none}
-.sheet-panel.active{display:block}
-
-/* combat */
+.sheet-name{font-family:var(--head);font-size:20px;letter-spacing:2px}
+.sheet-role-line{font-size:10px;color:var(--blue);letter-spacing:3px;margin-top:3px}
+.sheet-tabs{display:flex;margin-bottom:14px;border-bottom:1px solid var(--border);overflow-x:auto}
+.sheet-tab{padding:6px 14px;font-size:10px;letter-spacing:2px;color:var(--dim);cursor:pointer;text-transform:uppercase;border-bottom:2px solid transparent;white-space:nowrap}
+.sheet-tab:hover{color:var(--muted)}.sheet-tab.active{color:var(--text);border-bottom-color:var(--blue)}
+.sheet-panel{display:none}.sheet-panel.active{display:block}
 .combat-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
-.combat-box{background:var(--c-panel);border:1px solid var(--c-faint);padding:10px;text-align:center}
-.hp-big{font-family:var(--c-head);font-size:30px;font-weight:700}
-.hp-big.ok{color:var(--c-green)}
-.hp-big.warn{color:var(--c-yellow)}
-.hp-big.crit{color:var(--c-red)}
+.combat-box{background:var(--panel);border:1px solid var(--faint);padding:10px;text-align:center}
+.hp-big{font-family:var(--head);font-size:30px;font-weight:700}
+.hp-big.ok{color:var(--green)}.hp-big.warn{color:var(--yellow)}.hp-big.crit{color:var(--red)}
 .hp-controls{display:flex;gap:4px;justify-content:center;margin-top:8px;flex-wrap:wrap}
-.hp-controls button{
-  background:var(--c-panel);border:1px solid var(--c-border);color:var(--c-text);
-  font-family:var(--c-mono);font-size:12px;width:30px;height:30px;cursor:pointer;
-}
-.hp-controls button:hover{border-color:var(--c-text)}
-.hp-controls input{
-  background:var(--c-panel);border:1px solid var(--c-border);color:var(--c-text);
-  font-family:var(--c-mono);font-size:12px;width:48px;text-align:center;padding:4px;
-}
-/* attrs */
+.hp-controls button{background:var(--panel);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;width:30px;height:30px;cursor:pointer}
+.hp-controls button:hover{border-color:var(--text)}
+.hp-controls input{background:var(--panel);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;width:48px;text-align:center;padding:4px}
 .attrs-display{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:6px;margin-bottom:14px}
-.attr-box{background:var(--c-panel);border:1px solid var(--c-faint);padding:8px;text-align:center}
-.attr-label{font-size:9px;color:var(--c-dim);letter-spacing:1px;margin-bottom:4px}
-.attr-val{font-size:22px;color:var(--c-text);font-weight:700}
-/* skills */
+.attr-box{background:var(--panel);border:1px solid var(--faint);padding:8px;text-align:center}
+.attr-label{font-size:9px;color:var(--dim);letter-spacing:1px;margin-bottom:4px}
+.attr-val{font-size:22px;color:var(--text);font-weight:700}
 .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:14px}
-.skill-row{display:flex;justify-content:space-between;align-items:center;padding:4px 8px;background:var(--c-panel);border:1px solid var(--c-faint);font-size:11px}
-.skill-name{color:var(--c-muted)}
-.skill-val{color:var(--c-text);font-weight:700}
-/* gear */
-.gear-item{display:flex;justify-content:space-between;align-items:center;padding:5px 8px;border-bottom:1px solid var(--c-faint);font-size:11px}
+.skill-row{display:flex;justify-content:space-between;align-items:center;padding:4px 8px;background:var(--panel);border:1px solid var(--faint);font-size:11px}
+.skill-name{color:var(--muted)}.skill-val{color:var(--text);font-weight:700}
+.gear-item{display:flex;justify-content:space-between;align-items:center;padding:5px 8px;border-bottom:1px solid var(--faint);font-size:11px}
 .gear-item:last-child{border-bottom:none}
-.gear-name{color:var(--c-text)}
-.gear-tag{font-size:9px;color:var(--c-dim);border:1px solid var(--c-faint);padding:1px 6px;margin-left:6px}
+.gear-name{color:var(--text)}
+.gear-tag{font-size:9px;color:var(--dim);border:1px solid var(--faint);padding:1px 6px;margin-left:6px}
 .gear-add-row{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-.gear-add-row input{
-  background:var(--c-panel);border:1px solid var(--c-border);color:var(--c-text);
-  font-family:var(--c-mono);font-size:11px;padding:5px 8px;flex:1;min-width:100px;
-}
-.gear-add-row input::placeholder{color:var(--c-faint)}
-/* notes */
-.notes-area{
-  background:var(--c-panel);border:1px solid var(--c-faint);padding:10px;
-  font-size:11px;color:var(--c-muted);line-height:1.7;min-height:100px;
-  white-space:pre-wrap;
-}
-.notes-area[contenteditable]:focus{outline:none;border-color:var(--c-blue);color:var(--c-text)}
+.gear-add-row input{background:var(--panel);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:11px;padding:5px 8px;flex:1;min-width:80px}
+.gear-add-row input::placeholder{color:var(--faint)}
+.notes-area{background:var(--panel);border:1px solid var(--faint);padding:10px;font-size:11px;color:var(--muted);line-height:1.7;min-height:80px;white-space:pre-wrap}
+.notes-area[contenteditable="true"]:focus{outline:none;border-color:var(--blue);color:var(--text)}
+.notes-block{margin-bottom:14px}
+.notes-block-label{font-size:9px;letter-spacing:2px;padding:3px 8px;margin-bottom:6px;display:inline-block;text-transform:uppercase}
+.notes-block-label.player{color:var(--blue);border:1px solid #378add44;background:#020810}
+.notes-block-label.gm{color:var(--yellow);border:1px solid #ef9f2744;background:#0d0800}
 
-/* ════════════════════════════════════
-   PÁGINA: GM CONSOLE
-════════════════════════════════════ */
-.gm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
-.gm-card{background:var(--c-surface);border:1px solid #ef9f2744;padding:14px}
-.gm-card-title{font-size:10px;color:#ef9f27;letter-spacing:3px;margin-bottom:10px;text-transform:uppercase}
-.dice-result{font-family:var(--c-head);font-size:36px;color:var(--c-text);text-align:center;padding:10px 0}
-.dice-label{font-size:10px;color:var(--c-dim);text-align:center;letter-spacing:1px}
+/* GM CONSOLE */
+.gm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.gm-card{background:var(--surface);border:1px solid #ef9f2722;padding:16px}
+.gm-card-title{font-size:10px;color:var(--yellow);letter-spacing:3px;margin-bottom:12px;text-transform:uppercase}
+.char-pw-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--faint);font-size:11px;flex-wrap:wrap}
+.char-pw-row:last-child{border-bottom:none}
+.char-pw-name{color:var(--text);min-width:110px;font-weight:700}
+.char-pw-player{color:var(--blue);font-size:10px;flex:1}
+.char-pw-input{background:var(--panel);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:11px;padding:3px 6px;width:130px;text-transform:uppercase}
+.char-pw-input:focus{outline:none;border-color:var(--text)}
+.pub-assign-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--faint);font-size:11px;flex-wrap:wrap}
+.pub-assign-row:last-child{border-bottom:none}
+.pub-assign-name{color:var(--text);min-width:130px}
+.pub-assign-status{font-size:9px;color:var(--dim);margin-right:4px}
+.char-checkbox-list{display:flex;gap:8px;flex-wrap:wrap;flex:1}
+.char-checkbox-list label{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:3px;cursor:pointer;white-space:nowrap}
+.char-checkbox-list input[type=checkbox]{accent-color:var(--yellow)}
+.dice-result{font-family:var(--head);font-size:36px;color:var(--text);text-align:center;padding:10px 0}
+.dice-label{font-size:10px;color:var(--dim);text-align:center;letter-spacing:1px}
 .dice-btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;justify-content:center}
 
-/* ════════════════════════════════════
-   FOOTER
-════════════════════════════════════ */
-footer{
-  background:var(--c-panel);border-top:1px solid var(--c-border);
-  padding:16px 20px;font-size:10px;color:var(--c-dim);
-  display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;
-}
-footer a{color:var(--c-muted);text-decoration:none}
-footer a:hover{color:var(--c-text)}
-
-/* ════════════════════════════════════
-   LOADING OVERLAY
-════════════════════════════════════ */
-#loading{
-  position:fixed;inset:0;background:var(--c-bg);z-index:500;
-  display:flex;align-items:center;justify-content:center;font-size:11px;
-  color:var(--c-dim);letter-spacing:3px;text-transform:uppercase;
-}
-
-/* ── MISC ── */
-.empty-state{font-size:11px;color:var(--c-dim);padding:24px;text-align:center;border:1px solid var(--c-faint);letter-spacing:1px}
-.divider{border:none;border-top:1px solid var(--c-faint);margin:14px 0}
-.tag{font-size:9px;padding:2px 8px;letter-spacing:1px;border:1px solid;text-transform:uppercase}
-.tag.gm{border-color:#ef9f2766;color:#ef9f27}
-.tag.player{border-color:#1d9e7566;color:var(--c-green)}
+/* MISC */
+.empty-state{font-size:11px;color:var(--dim);padding:24px;text-align:center;border:1px solid var(--faint);letter-spacing:1px}
+footer{background:var(--panel);border-top:1px solid var(--border);padding:16px 20px;font-size:10px;color:var(--dim);display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between}
+#loading{position:fixed;inset:0;background:var(--bg);z-index:500;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--dim);letter-spacing:3px;text-transform:uppercase}
 @media(max-width:600px){
-  .form-row,.form-row3{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
   .combat-row{grid-template-columns:1fr}
   .news-item{grid-template-columns:1fr;gap:4px}
   .main{padding:12px}
@@ -345,37 +200,30 @@ footer a:hover{color:var(--c-text)}
 </head>
 <body>
 
-<!-- ══ LOADING ══ -->
 <div id="loading">// CONECTANDO AO DATATERM... //</div>
 
-<!-- ══ LOGIN ══ -->
+<!-- LOGIN -->
 <div id="loginScreen">
   <div class="login-box">
     <div class="login-logo">DATA<span>TERM</span>™</div>
-    <div class="login-sub">NIGHT CITY // 2021 // NIGHTCORP<span class="login-cursor">_</span></div>
+    <div class="login-sub">MONTREAL // 2045 // BELL-QUÉBECOR<span class="login-cursor">_</span></div>
     <label class="login-label">Código de acesso</label>
     <input type="password" id="loginInput" placeholder="••••••••••••" maxlength="32"
            onkeydown="if(event.key==='Enter')doLogin()">
     <button class="login-btn" onclick="doLogin()">AUTENTICAR</button>
     <div class="login-err" id="loginErr"></div>
-    <div class="login-hint">
-      Terminal #0854 // Peel/PARA-DOX<br>
-      Operado por NIGHTCORP<br>
-      DATATERM-OS v4.232 © Euro Business Machines
-    </div>
+    <div class="login-hint">Terminal #0952 // Peel/Notre-Dame<br>DATATERM-OS v4.232 © Euro Business Machines</div>
   </div>
 </div>
 
-<!-- ══ APP ══ -->
+<!-- APP -->
 <div id="app">
-
-  <!-- TOP BAR -->
   <div class="topbar">
-    <div class="topbar-left">
+    <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
       <div class="topbar-logo">DATA<span>TERM</span>™</div>
       <div class="topbar-meta">
-        <div>AGENTE: <span id="tbUser" style="color:var(--c-text)">--</span></div>
-        <div id="tbTime" style="color:var(--c-dim)"></div>
+        <div>AGENTE: <span id="tbUser" style="color:var(--text)">--</span></div>
+        <div id="tbTime" style="color:var(--dim)"></div>
       </div>
     </div>
     <div class="topbar-right">
@@ -384,150 +232,93 @@ footer a:hover{color:var(--c-text)}
     </div>
   </div>
 
-  <!-- STATUS BAR -->
   <div class="statusbar">
     <div><span class="dot-live"></span>ONLINE</div>
-    <div>DB: <span id="sbDb">JSONBin</span></div>
+    <div>DB: <span>JSONBin</span></div>
     <div>TERMINAL: <span>#0952</span></div>
-    <div>OS: <span>DATATERM-OS v4.232</span></div>
     <div id="sbSaveStatus"></div>
   </div>
 
-  <!-- NAV -->
-  <div class="navtabs" id="navtabs">
+  <div class="navtabs">
     <div class="navtab active" onclick="showPage('terminal')" data-page="terminal">TERMINAL</div>
     <div class="navtab" onclick="showPage('news')" data-page="news">NOTÍCIAS</div>
-    <div class="navtab" onclick="showPage('chars')" data-page="chars">FICHAS</div>
-    <div class="navtab gm-tab gm-only" onclick="showPage('gm')" data-page="gm">GM CONSOLE</div>
+    <div class="navtab" id="navMyChar" style="display:none" onclick="showPage('mychar')" data-page="mychar">MINHA FICHA</div>
+    <div class="navtab gm-tab" id="navRoster" style="display:none" onclick="showPage('roster')" data-page="roster">ROSTER</div>
+    <div class="navtab gm-tab" id="navGm" style="display:none" onclick="showPage('gm')" data-page="gm">GM CONSOLE</div>
   </div>
 
-  <!-- MAIN -->
   <div class="main">
 
-    <!-- ════ PAGE: TERMINAL ════ -->
+    <!-- TERMINAL -->
     <div class="page active" id="page-terminal">
       <div class="hero">
         <div class="hero-title">BEM-VINDO AO <span>DATATERM™</span></div>
-        <div class="hero-tagline">Seu terminal único de acesso. DATATERM™.</div>
-        <div class="hero-update">Última atualização: <span id="lastUpdate">agora</span></div>
+        <div class="hero-tagline">Baixe, imprima ou consulte as notícias com o DATATERM™.</div>
+        <div class="hero-update">Última atualização: agora<span style="animation:blink 1s step-end infinite;display:inline">_</span></div>
       </div>
-
       <div class="sec-label">// PUBLICAÇÕES DISPONÍVEIS //</div>
       <div class="pub-grid" id="pubGrid"></div>
     </div>
 
-    <!-- ════ PAGE: NOTÍCIAS ════ -->
+    <!-- NOTÍCIAS -->
     <div class="page" id="page-news">
-      <div class="news-controls">
-        <div style="display:flex;align-items:center;gap:8px;flex:1">
-          <div class="news-badge">● AO VIVO</div>
-          <div class="sec-label" style="margin:0;border:none">// FEED DE NOTÍCIAS //</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap">
+        <div class="news-badge">● AO VIVO</div>
+        <div class="sec-label" style="margin:0;border:none">// FEED DE NOTÍCIAS //</div>
+        <div style="flex:1"></div>
+        <button class="btn blue" id="btnAddNews" style="display:none" onclick="openNewsForm()">+ NOVA NOTÍCIA</button>
+      </div>
+      <!-- form inline notícia (só GM) -->
+      <div id="newsForm" style="display:none;background:var(--surface);border:1px solid #ef9f2722;padding:14px;margin-bottom:14px">
+        <div class="gm-card-title">// NOVA NOTÍCIA //</div>
+        <div class="form-row">
+          <div class="field"><label>Data/Hora</label><input id="nDate" placeholder="14 Jan 2045 // 06:00"></div>
+          <div class="field"><label>Manchete</label><input id="nHead" placeholder="EVENTO EM MAIÚSCULO"></div>
         </div>
-        <button class="btn blue gm-only" onclick="openNewsModal()">+ NOVA NOTÍCIA</button>
+        <div class="field"><label>Sub-manchete</label><input id="nSub" placeholder="Detalhes opcionais..."></div>
+        <div style="display:flex;gap:8px">
+          <button class="btn ok" onclick="submitNews()">PUBLICAR</button>
+          <button class="btn" onclick="closeNewsForm()">CANCELAR</button>
+        </div>
       </div>
       <div id="newsList"></div>
     </div>
 
-    <!-- ════ PAGE: FICHAS ════ -->
-    <div class="page" id="page-chars">
+    <!-- MINHA FICHA (char login) -->
+    <div class="page" id="page-mychar">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-        <div class="sec-label" style="margin:0;border:none">// AGENTES REGISTRADOS //</div>
+        <div class="sec-label" style="margin:0;border:none">// FICHA DO AGENTE //</div>
+        <button class="btn ok" onclick="saveSheet('myCharSheet', false)">SALVAR FICHA</button>
+      </div>
+      <div id="myCharSheet"></div>
+    </div>
+
+    <!-- ROSTER (GM) -->
+    <div class="page" id="page-roster">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+        <div class="sec-label" style="margin:0;border:none">// TODOS OS AGENTES //</div>
         <div style="display:flex;gap:6px;flex-wrap:wrap">
           <button class="btn" id="btnBackRoster" onclick="showRoster()" style="display:none">◀ ROSTER</button>
-          <button class="btn blue gm-only" onclick="openCharForm()">+ NOVO AGENTE</button>
+          <button class="btn blue" onclick="openCharForm(false)">+ NOVO AGENTE</button>
         </div>
       </div>
-      <!-- Roster -->
+      <!-- Lista -->
       <div id="rosterView">
         <div class="roster-grid" id="rosterGrid"></div>
         <div id="rosterEmpty" class="empty-state" style="display:none">[ NENHUM AGENTE REGISTRADO ]</div>
       </div>
-      <!-- Sheet -->
+      <!-- Ficha (GM view) -->
       <div id="sheetView" style="display:none">
-        <div class="sheet">
-          <div class="sheet-header">
-            <div>
-              <div class="sheet-name" id="sName"></div>
-              <div class="sheet-role-line" id="sRole"></div>
-              <div class="sheet-player-line" id="sPlayer"></div>
-            </div>
-            <div class="sheet-actions">
-              <button class="btn ok" onclick="saveChar()">SALVAR</button>
-              <button class="btn blue gm-only" id="btnEditChar" onclick="openCharForm(true)">EDITAR</button>
-              <button class="btn danger gm-only" onclick="deleteChar()">DELETAR</button>
-            </div>
-          </div>
-          <div class="sheet-tabs">
-            <div class="sheet-tab active" onclick="switchSheetTab('combat')">COMBATE</div>
-            <div class="sheet-tab" onclick="switchSheetTab('attrs')">ATRIBUTOS</div>
-            <div class="sheet-tab" onclick="switchSheetTab('skills')">HABILIDADES</div>
-            <div class="sheet-tab" onclick="switchSheetTab('gear')">EQUIPAMENTO</div>
-            <div class="sheet-tab" onclick="switchSheetTab('notes')">NOTAS</div>
-          </div>
-          <!-- Combat -->
-          <div class="sheet-panel active" id="sp-combat">
-            <div class="combat-row">
-              <div class="combat-box">
-                <div class="sec-label">HP ATUAL / MÁX</div>
-                <div class="hp-big" id="sHpNum">--</div>
-                <div style="font-size:10px;color:var(--c-dim);margin:2px 0 6px" id="sHpMax"></div>
-                <div class="hp-controls">
-                  <button onclick="adjHp(-5)">-5</button>
-                  <button onclick="adjHp(-1)">-1</button>
-                  <input type="number" id="hpDelta" value="1" min="1" max="999" style="width:52px">
-                  <button onclick="adjHpX(-1)">−X</button>
-                  <button onclick="adjHpX(1)">+X</button>
-                  <button onclick="adjHp(1)">+1</button>
-                  <button onclick="adjHp(5)">+5</button>
-                </div>
-              </div>
-              <div class="combat-box">
-                <div class="sec-label">ARMADURA / HUMANIDADE</div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px">
-                  <div style="text-align:center">
-                    <div style="font-size:24px;font-weight:700;color:var(--c-blue)" id="sArmor">--</div>
-                    <div style="font-size:9px;color:var(--c-dim);margin-top:2px">SP ARMADURA</div>
-                  </div>
-                  <div style="text-align:center">
-                    <div style="font-size:24px;font-weight:700;color:var(--c-yellow)" id="sHumanity">--</div>
-                    <div style="font-size:9px;color:var(--c-dim);margin-top:2px">HUMANIDADE</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Attrs -->
-          <div class="sheet-panel" id="sp-attrs">
-            <div class="sec-label">ATRIBUTOS PRIMÁRIOS</div>
-            <div class="attrs-display" id="sAttrsGrid"></div>
-          </div>
-          <!-- Skills -->
-          <div class="sheet-panel" id="sp-skills">
-            <div class="sec-label">HABILIDADES</div>
-            <div class="skills-grid" id="sSkillsGrid"></div>
-          </div>
-          <!-- Gear -->
-          <div class="sheet-panel" id="sp-gear">
-            <div class="sec-label">INVENTÁRIO</div>
-            <div id="sGearList"></div>
-            <div class="gear-add-row">
-              <input id="gearName" placeholder="Nome do item">
-              <input id="gearTag" placeholder="Tag" style="max-width:100px">
-              <button class="btn ok" onclick="addGear()">ADICIONAR</button>
-            </div>
-          </div>
-          <!-- Notes -->
-          <div class="sheet-panel" id="sp-notes">
-            <div class="sec-label">NOTAS</div>
-            <div class="notes-area" id="sNotes" contenteditable="true"></div>
-            <div style="font-size:9px;color:var(--c-faint);margin-top:4px;letter-spacing:1px">[ CLIQUE PARA EDITAR — SALVE COM O BOTÃO ACIMA ]</div>
-          </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">
+          <button class="btn ok" onclick="saveSheet('gmCharSheet', true)">SALVAR</button>
+          <button class="btn blue" onclick="openCharForm(true)">EDITAR</button>
+          <button class="btn danger" onclick="deleteChar()">DELETAR</button>
         </div>
+        <div id="gmCharSheet"></div>
       </div>
-
-      <!-- CHAR FORM MODAL -->
-      <div id="charFormWrap" style="display:none;margin-top:16px">
-        <div style="background:var(--c-surface);border:1px solid #ef9f2744;padding:16px">
+      <!-- Formulário -->
+      <div id="charFormWrap" style="display:none;margin-top:4px">
+        <div style="background:var(--surface);border:1px solid #ef9f2722;padding:16px">
           <div class="gm-card-title" id="charFormTitle">// REGISTRAR NOVO AGENTE //</div>
           <div class="form-row">
             <div class="field"><label>Nome do personagem</label><input id="fName" placeholder="Ex: Johnny Rache"></div>
@@ -548,17 +339,21 @@ footer a:hover{color:var(--c-text)}
             <div class="field"><label>Armadura (SP)</label><input id="fArmor" type="number" placeholder="11"></div>
             <div class="field"><label>Humanidade</label><input id="fHumanity" type="number" placeholder="70"></div>
           </div>
+          <div class="field">
+            <label>Senha de acesso do jogador</label>
+            <input id="fPw" placeholder="EX: JOHNNY_PW" style="text-transform:uppercase" autocomplete="off">
+          </div>
           <hr class="divider">
           <div class="sec-label">ATRIBUTOS PRIMÁRIOS (1–10)</div>
           <div class="attrs-grid" style="margin-bottom:12px" id="attrInputs"></div>
           <hr class="divider">
           <div class="field">
             <label>Habilidades — formato: Nome:Valor, Nome:Valor</label>
-            <textarea id="fSkills" rows="2" placeholder="Atletismo:6, Armas Curtas:7, Hacking:8, Primeiros Socorros:4" style="resize:vertical"></textarea>
+            <textarea id="fSkills" rows="2" placeholder="Atletismo:6, Armas Curtas:7, Hacking:8" style="resize:vertical"></textarea>
           </div>
           <div class="field">
-            <label>Notas iniciais</label>
-            <textarea id="fNotes" rows="2" placeholder="Background, cyberware, contatos..." style="resize:vertical"></textarea>
+            <label>Notas do GM (invisíveis ao jogador)</label>
+            <textarea id="fGmNotes" rows="2" placeholder="Segredos, objetivos ocultos, motivações reais..." style="resize:vertical"></textarea>
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
             <button class="btn ok" onclick="submitChar()">CONFIRMAR</button>
@@ -568,16 +363,36 @@ footer a:hover{color:var(--c-text)}
       </div>
     </div>
 
-    <!-- ════ PAGE: GM CONSOLE ════ -->
+    <!-- GM CONSOLE -->
     <div class="page" id="page-gm">
       <div class="sec-label">// GM CONSOLE — ACESSO RESTRITO //</div>
       <div class="gm-grid">
 
-        <!-- Dice -->
+        <!-- Senhas dos personagens -->
+        <div class="gm-card" style="grid-column:1/-1">
+          <div class="gm-card-title">Credenciais dos personagens</div>
+          <div style="font-size:9px;color:var(--dim);letter-spacing:1px;margin-bottom:10px;line-height:1.6">
+            Cada personagem tem sua própria senha. O jogador usa essa senha para acessar exclusivamente a ficha dele.<br>
+            Edite e salve linha por linha. Compartilhe a senha somente com o jogador correspondente.
+          </div>
+          <div id="charPwList"></div>
+        </div>
+
+        <!-- Publicações exclusivas -->
+        <div class="gm-card" style="grid-column:1/-1">
+          <div class="gm-card-title">Publicações exclusivas por personagem</div>
+          <div style="font-size:9px;color:var(--dim);letter-spacing:1px;margin-bottom:10px;line-height:1.6">
+            Marque quais personagens podem ver cada publicação marcada como "exclusive".<br>
+            Publicações públicas são visíveis a todos. Bloqueadas não aparecem para ninguém além do GM.
+          </div>
+          <div id="pubAssignList"></div>
+        </div>
+
+        <!-- Dados -->
         <div class="gm-card">
           <div class="gm-card-title">Rolagem de dados</div>
           <div class="dice-result" id="diceResult">—</div>
-          <div class="dice-label" id="diceLabel">Selecione um dado abaixo</div>
+          <div class="dice-label" id="diceLabel">Selecione um dado</div>
           <div class="dice-btns">
             <button class="btn yellow" onclick="rollDice(4)">D4</button>
             <button class="btn yellow" onclick="rollDice(6)">D6</button>
@@ -586,56 +401,43 @@ footer a:hover{color:var(--c-text)}
             <button class="btn yellow" onclick="rollDice(20)">D20</button>
             <button class="btn yellow" onclick="rollDice(100)">D100</button>
           </div>
-          <div style="margin-top:10px;display:flex;gap:6px;align-items:center">
-            <input id="diceQty" type="number" value="2" min="1" max="10" style="background:var(--c-panel);border:1px solid var(--c-border);color:var(--c-text);font-family:var(--c-mono);font-size:12px;padding:4px 6px;width:50px">
-            <span style="font-size:10px;color:var(--c-dim)">× D10 (Cyberpunk)</span>
+          <div style="margin-top:10px;display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+            <input id="diceQty" type="number" value="2" min="1" max="10"
+              style="background:var(--panel);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:4px 6px;width:50px">
+            <span style="font-size:10px;color:var(--dim)">× D10</span>
             <button class="btn yellow" onclick="rollMulti()">ROLAR</button>
           </div>
         </div>
 
-        <!-- Config de senhas -->
+        <!-- Nova publicação -->
         <div class="gm-card">
-          <div class="gm-card-title">Gerenciar acessos</div>
-          <div class="field"><label>Senha do Mestre</label><input type="password" id="cfgGmPw" placeholder="••••••••"></div>
-          <div class="field"><label>Senha dos Jogadores</label><input type="password" id="cfgPlPw" placeholder="••••••••"></div>
-          <div class="field"><label>Nome do mestre</label><input id="cfgGmName" placeholder="Ex: Narrador"></div>
-          <button class="btn yellow" onclick="savePasswords()">SALVAR SENHAS</button>
-          <div style="font-size:9px;color:var(--c-dim);margin-top:8px;line-height:1.6;letter-spacing:1px">
-            Alterar aqui atualiza o storage.<br>
-            Compartilhe as senhas com os jogadores.
-          </div>
-        </div>
-
-        <!-- JSONBin config -->
-        <div class="gm-card">
-          <div class="gm-card-title">Configuração JSONBin</div>
-          <div class="field">
-            <label>API Key (X-Master-Key)</label>
-            <input id="cfgApiKey" placeholder="$2b$10$..." type="password">
-          </div>
-          <div class="field">
-            <label>Bin ID</label>
-            <input id="cfgBinId" placeholder="64abc123...">
-          </div>
-          <button class="btn yellow" onclick="saveJsonbinConfig()">SALVAR CONFIG</button>
-          <div style="font-size:9px;color:var(--c-dim);margin-top:8px;line-height:1.6;letter-spacing:1px">
-            Crie um bin em jsonbin.io<br>
-            Cole a API Key e o Bin ID acima.<br>
-            Config salva no localStorage do mestre.
-          </div>
-        </div>
-
-        <!-- Publicações GM -->
-        <div class="gm-card">
-          <div class="gm-card-title">Gerenciar publicações</div>
+          <div class="gm-card-title">Adicionar publicação</div>
           <div class="field"><label>Número (P01…)</label><input id="pubNum" placeholder="P08"></div>
           <div class="field"><label>Título</label><input id="pubTitle" placeholder="Nome da publicação"></div>
           <div class="field"><label>Descrição</label><input id="pubDesc" placeholder="Breve descrição"></div>
           <div class="field">
-            <label>Status</label>
-            <select id="pubStatus"><option value="active">Disponível</option><option value="locked">Bloqueada</option></select>
+            <label>Visibilidade padrão</label>
+            <select id="pubStatus">
+              <option value="public">Pública (todos veem)</option>
+              <option value="exclusive">Exclusiva (marcar por char abaixo)</option>
+              <option value="locked">Bloqueada (ninguém além do GM)</option>
+            </select>
           </div>
           <button class="btn yellow" onclick="addPub()">ADICIONAR</button>
+        </div>
+
+        <!-- Senhas globais + JSONBin -->
+        <div class="gm-card">
+          <div class="gm-card-title">Senhas globais</div>
+          <div class="field"><label>Senha do Mestre</label><input type="password" id="cfgGmPw" placeholder="••••••••" autocomplete="off"></div>
+          <div class="field"><label>Senha genérica jogadores</label><input type="password" id="cfgPlPw" placeholder="••••••••" autocomplete="off"></div>
+          <div class="field"><label>Nome do mestre exibido</label><input id="cfgGmName" placeholder="Narrador"></div>
+          <button class="btn yellow" onclick="savePasswords()" style="margin-bottom:14px">SALVAR SENHAS</button>
+          <hr class="divider">
+          <div class="gm-card-title" style="margin-top:4px">JSONBin</div>
+          <div class="field"><label>API Key</label><input type="password" id="cfgApiKey" placeholder="$2b$10$..." autocomplete="off"></div>
+          <div class="field"><label>Bin ID</label><input id="cfgBinId" placeholder="64abc123..."></div>
+          <button class="btn yellow" onclick="saveJsonbinConfig()">SALVAR JSONBIN</button>
         </div>
 
       </div>
@@ -643,191 +445,173 @@ footer a:hover{color:var(--c-text)}
 
   </div><!-- /main -->
 
-  <!-- FOOTER -->
   <footer>
-    <div>
-      DATATERM™ © 2021 NIGHTCORP &nbsp;·&nbsp;
-    </div>
+    <div>DATATERM™ © 2045 Bell-Québecor</div>
+    <div style="color:var(--faint)">Fan project — Cyberpunk 2020/Red — R. Talsorian Games</div>
   </footer>
-
-</div><!-- /app -->
-
-<!-- TOAST -->
-<div id="toast"></div>
-
-<!-- NEWS MODAL -->
-<div id="newsModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:800;align-items:center;justify-content:center">
-  <div style="background:var(--c-surface);border:1px solid #ef9f2744;padding:20px;width:90%;max-width:460px">
-    <div class="gm-card-title">// NOVA NOTÍCIA //</div>
-    <div class="field"><label>Data/Hora</label><input id="nDate" placeholder="14 Jan 2021 // 06:00"></div>
-    <div class="field"><label>Manchete (MAIÚSCULO)</label><input id="nHead" placeholder="CORPO ENCONTRADO EM VILLERAY"></div>
-    <div class="field"><label>Sub-manchete</label><input id="nSub" placeholder="Detalhes adicionais..."></div>
-    <div style="display:flex;gap:8px;margin-top:4px">
-      <button class="btn ok" onclick="submitNews()">PUBLICAR</button>
-      <button class="btn" onclick="closeNewsModal()">CANCELAR</button>
-    </div>
-  </div>
 </div>
 
+<div id="toast"></div>
+
 <script>
-/* ══════════════════════════════════════════
-   CONFIG — EDITE AQUI
-══════════════════════════════════════════ */
+/* ════════════════════════════════════════
+   CONFIG — edite antes de subir
+════════════════════════════════════════ */
 const CONFIG = {
-  gmName:   'Narrador',       // nome exibido para o mestre
-  // Senhas padrão — o mestre pode alterar no GM Console
-  // IMPORTANTE: após deploy, troque no GM Console e salve no JSONBin
-  defaultGmPw:     'MESTRE2077',
-  defaultPlayerPw: 'EDGERUNNER',
+  defaultGmPw:     'REQUIEM',
+  defaultPlayerPw: 'AGENTE001',
+  gmName:          'Mastermind',
 };
 
-/* ══════════════════════════════════════════
-   JSONBIN — preencha após criar sua conta
-   ou configure no GM Console do site
-══════════════════════════════════════════ */
+/* Cole suas credenciais JSONBin aqui (fixas para todos os usuários) */
 let JSONBIN = {
   apiKey: '$2a$10$li1OGXGVZw1MDOl3NfLEgejI/OHM0yyScaBr0l5dFBgbK/Hn3CnZG',
-  binId: '6a03a70dc0954111d8148dc8' ,
+  binId:  '6a03a70dc0954111d8148dc8',
 };
-/* ══════════════════════════════════════════
-   STATE
-══════════════════════════════════════════ */
-const ATTRS = ['INT','REF','DEX','TECH','COOL','WILL','LUCK','MOVE','BODY','EMP'];
+
+/* ════════════════════════════════════════
+   DB — estrutura padrão
+════════════════════════════════════════ */
 let DB = {
-  passwords: { gm: CONFIG.defaultGmPw, player: CONFIG.defaultPlayerPw, gmName: CONFIG.gmName },
+  passwords: {
+    gm:     CONFIG.defaultGmPw,
+    player: CONFIG.defaultPlayerPw,
+    gmName: CONFIG.gmName,
+    chars:  {}   // { charId: "SENHA_DO_JOGADOR" }
+  },
   pubs: [
-    {num:'P01',title:'The Montréal Update',    desc:'O screamsheet mais vendido da cidade, pela NIGHTCORP.',status:'active'},
-    {num:'P02',title:"Gunner's Arsenal",        desc:'Lista de armas e homebrew para Cyberpunk Red.',         status:'active'},
-    {num:'P03',title:'Clash Club Confidential', desc:'Banco de NPCs inimigos para uso dos árbitros.',         status:'locked'},
-    {num:'P04',title:'Random Tables',           desc:'Tabelas aleatórias de NPCs, locais e cenários.',        status:'active'},
-    {num:'P05',title:'Roles of the Street',     desc:'Regras homebrew para o sistema Cyberpunk 2020.',        status:'active'},
-    {num:'P06',title:'NETSHOP',                 desc:'Itens e sistemas homebrew para Cyberpunk Red.',         status:'active'},
-    {num:'P07',title:'Public Database_',        desc:'Cenário de Montréal para Cyberpunk Red/2020.',          status:'active'},
+    {num:'P01',title:'The Montréal Update',    desc:'O screamsheet mais vendido da cidade.',        status:'public',   allowedChars:[]},
+    {num:'P02',title:"Gunner's Arsenal",        desc:'Lista de armas e homebrew para Cyberpunk Red.',status:'public',   allowedChars:[]},
+    {num:'P03',title:'Clash Club Confidential', desc:'Database de NPCs inimigos — árbitros.',       status:'locked',   allowedChars:[]},
+    {num:'P04',title:'Random Tables',           desc:'Tabelas aleatórias de NPCs e cenários.',      status:'public',   allowedChars:[]},
+    {num:'P05',title:'Roles of the Street',     desc:'Regras homebrew Cyberpunk 2020.',             status:'public',   allowedChars:[]},
+    {num:'P06',title:'NETSHOP',                 desc:'Itens homebrew para Cyberpunk Red.',          status:'public',   allowedChars:[]},
+    {num:'P07',title:'Public Database_',        desc:'Cenário de Montréal para Cyberpunk Red.',     status:'public',   allowedChars:[]},
   ],
   news: [
-    {date:'14 Jan 2021 // 06:00', headline:'EXECUTIVA DA KIROSHI SEQUESTRADA', sub:''},
-    {date:'14 Jan 2021 // 08:00', headline:'BIOTECHNICA ADIA LANÇAMENTO DA SECURICINE', sub:'O novo combate-drug chegará um mês atrasado.'},
-    {date:'25 Fev 2021 // 06:00', headline:'CIBERPSICOSE EM VILLE-MARIE — 7 MORTOS', sub:'12 feridos segundo relatório da SPVM.'},
-    {date:'01 Mar 2021 // 05:00', headline:'ZETATECH REVELA NOVIDADES DE 2021', sub:'Novos chipsets de habilidade serão adicionados ao portfólio.'},
+    {date:'14 Jan 2045 // 06:00', headline:'EXECUTIVA DA KIROSHI SEQUESTRADA',          sub:''},
+    {date:'14 Jan 2045 // 08:00', headline:'BIOTECHNICA ADIA LANÇAMENTO DA SECURICINE', sub:'O combat-drug chegará um mês atrasado.'},
+    {date:'25 Fev 2045 // 06:00', headline:'CIBERPSICOSE EM VILLE-MARIE — 7 MORTOS',    sub:'12 feridos segundo relatório da SPVM.'},
   ],
-  chars: {},
+  chars: {}
+  /*
+    charId: {
+      name, player, role,
+      hpMax, hpCur, armor, humanity,
+      attrs: { INT, REF, DEX, TECH, COOL, WILL, LUCK, MOVE, BODY, EMP },
+      skills: { "Atletismo": 6, ... },
+      gear: [ { name, tag } ],
+      notes: "",     ← escrito pelo jogador, lido pelo GM
+      gmNotes: "",   ← escrito pelo GM, invisível ao jogador
+    }
+  */
 };
 
-let role = null;        // 'gm' | 'player'
-let currentCharId = null;
-let currentSheetTab = 'combat';
-let editingChar = false;
-let saveTimer = null;
+/* ════════════════════════════════════════
+   STATE
+════════════════════════════════════════ */
+const ATTRS = ['INT','REF','DEX','TECH','COOL','WILL','LUCK','MOVE','BODY','EMP'];
+let role         = null;   // 'gm' | 'char' | 'player'
+let myCharId     = null;   // id do char quando role === 'char'
+let currentCharId = null;  // char aberto no roster (GM)
+let editingChar  = false;
 
-/* ══════════════════════════════════════════
-   JSONBIN HELPERS
-══════════════════════════════════════════ */
+/* ════════════════════════════════════════
+   JSONBIN
+════════════════════════════════════════ */
 async function dbLoad() {
-  if (!JSONBIN.apiKey || !JSONBIN.binId) {
-    // Sem JSONBin configurado: usa defaults
-    return false;
-  }
+  if (!JSONBIN.apiKey || JSONBIN.apiKey.includes('COLE_')) return false;
   try {
     const r = await fetch(`https://api.jsonbin.io/v3/b/${JSONBIN.binId}/latest`, {
-      headers: { 'X-Master-Key': JSONBIN.apiKey }
+      headers: {'X-Master-Key': JSONBIN.apiKey, 'X-Bin-Versioning': 'false'}
     });
     if (!r.ok) return false;
     const j = await r.json();
     if (j.record) {
-      DB = Object.assign({}, DB, j.record);
-      // Garante estrutura mínima
-      if (!DB.passwords) DB.passwords = {};
-      if (!DB.pubs)      DB.pubs = [];
-      if (!DB.news)      DB.news = [];
-      if (!DB.chars)     DB.chars = {};
+      const rec = j.record;
+      if (rec.passwords) { DB.passwords = rec.passwords; if (!DB.passwords.chars) DB.passwords.chars = {}; }
+      if (rec.pubs)  { DB.pubs  = rec.pubs;  DB.pubs.forEach(p=>{ if(!p.allowedChars) p.allowedChars=[]; }); }
+      if (rec.news)  DB.news  = rec.news;
+      if (rec.chars) DB.chars = rec.chars;
     }
     return true;
-  } catch(e) { return false; }
+  } catch(e) { console.error('dbLoad:', e); return false; }
 }
 
 async function dbSave() {
-  if (!JSONBIN.apiKey || !JSONBIN.binId) {
-    setSaveStatus('[ SEM JSONBIN — dados locais ]');
-    return false;
+  if (!JSONBIN.apiKey || JSONBIN.apiKey.includes('COLE_')) {
+    setSaveStatus('[ CONFIGURE JSONBIN ]'); return false;
   }
   try {
     setSaveStatus('SALVANDO...');
     const r = await fetch(`https://api.jsonbin.io/v3/b/${JSONBIN.binId}`, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Master-Key': JSONBIN.apiKey
-      },
+      headers: {'Content-Type':'application/json','X-Master-Key':JSONBIN.apiKey,'X-Bin-Versioning':'false'},
       body: JSON.stringify(DB)
     });
-    if (r.ok) { toast('Dados salvos no JSONBin ✓','ok'); setSaveStatus('SALVO ✓'); }
-    else { toast('Erro ao salvar','err'); setSaveStatus('ERRO'); }
+    if (r.ok) { toast('Dados salvos ✓','ok'); setSaveStatus('SALVO ✓'); }
+    else { const b=await r.json().catch(()=>{}); console.error('dbSave',r.status,b); toast(`Erro ${r.status}`,'err'); setSaveStatus('ERRO '+r.status); }
     return r.ok;
   } catch(e) { toast('Sem conexão','err'); setSaveStatus('OFFLINE'); return false; }
 }
 
-function scheduleSave() {
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(dbSave, 1500);
-}
-
-/* ══════════════════════════════════════════
-   UI HELPERS
-══════════════════════════════════════════ */
+/* ════════════════════════════════════════
+   HELPERS
+════════════════════════════════════════ */
 function toast(msg, type='ok') {
   const el = document.getElementById('toast');
   el.textContent = '// ' + msg.toUpperCase() + ' //';
   el.className = type + ' show';
   setTimeout(() => el.classList.remove('show'), 3000);
 }
-
-function setSaveStatus(msg) {
-  document.getElementById('sbSaveStatus').textContent = msg;
-}
+function setSaveStatus(m) { document.getElementById('sbSaveStatus').textContent = m; }
 
 function showPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.navtab').forEach(t => t.classList.remove('active'));
-  document.getElementById('page-' + name).classList.add('active');
-  document.querySelector(`[data-page="${name}"]`).classList.add('active');
-}
-
-function applyRole() {
-  document.querySelectorAll('.gm-only').forEach(el => {
-    el.style.display = role === 'gm' ? '' : 'none';
-  });
-  const badge = document.getElementById('roleBadge');
-  badge.textContent = role === 'gm' ? '⚑ GM' : '▶ JOGADOR';
-  badge.className = 'role-badge ' + role;
-  document.getElementById('tbUser').textContent =
-    role === 'gm' ? (DB.passwords.gmName || CONFIG.gmName) : 'AGENTE';
+  document.getElementById('page-'+name).classList.add('active');
+  const tab = document.querySelector(`[data-page="${name}"]`);
+  if (tab) tab.classList.add('active');
 }
 
 function updateClock() {
   const now = new Date();
   document.getElementById('tbTime').textContent =
-    now.toLocaleDateString('pt-BR') + ' // ' +
-    now.toTimeString().slice(0,5);
+    now.toLocaleDateString('pt-BR') + ' // ' + now.toTimeString().slice(0,5);
 }
 
-/* ══════════════════════════════════════════
-   LOGIN / LOGOUT
-══════════════════════════════════════════ */
-function doLogin() {
-  const pw = document.getElementById('loginInput').value.trim().toUpperCase();
+function parseSkills(str) {
+  const out = {};
+  str.split(',').forEach(s => {
+    const p = s.trim().split(':');
+    if (p.length >= 2) { const k=p[0].trim(), v=parseInt(p[1]); if(k&&!isNaN(v)) out[k]=v; }
+  });
+  return out;
+}
 
-  // Usa senhas do DB se carregadas, senão usa os defaults do CONFIG
-  const gmPw = (DB.passwords?.gm || CONFIG.defaultGmPw).toUpperCase();
-  const plPw = (DB.passwords?.player || CONFIG.defaultPlayerPw).toUpperCase();
+/* ════════════════════════════════════════
+   LOGIN
+   Lógica: GM → gm | senha_char → char | senha_player → player
+════════════════════════════════════════ */
+function doLogin() {
+  const pw    = document.getElementById('loginInput').value.trim().toUpperCase();
+  const gmPw  = (DB.passwords?.gm || CONFIG.defaultGmPw).toUpperCase();
+  const plPw  = (DB.passwords?.player || CONFIG.defaultPlayerPw).toUpperCase();
+  const cpws  = DB.passwords?.chars || {};
 
   if (pw === gmPw) {
-    role = 'gm';
+    role = 'gm'; myCharId = null;
   } else if (pw === plPw) {
-    role = 'player';
+    role = 'player'; myCharId = null;
   } else {
-    document.getElementById('loginErr').textContent = '// ACESSO NEGADO — CÓDIGO INVÁLIDO //';
-    document.getElementById('loginInput').value = '';
-    return;
+    // procura entre as senhas de personagens
+    const hit = Object.entries(cpws).find(([, cpw]) => cpw.toUpperCase() === pw);
+    if (hit) { role = 'char'; myCharId = hit[0]; }
+    else {
+      document.getElementById('loginErr').textContent = '// ACESSO NEGADO — CÓDIGO INVÁLIDO //';
+      document.getElementById('loginInput').value = '';
+      return;
+    }
   }
 
   document.getElementById('loginScreen').style.display = 'none';
@@ -837,39 +621,94 @@ function doLogin() {
 }
 
 function doLogout() {
-  role = null;
+  role = null; myCharId = null;
   document.getElementById('loginScreen').style.display = 'flex';
   document.getElementById('app').style.display = 'none';
   document.getElementById('loginInput').value = '';
   document.getElementById('loginErr').textContent = '';
 }
 
-/* ══════════════════════════════════════════
-   RENDER
-══════════════════════════════════════════ */
+function applyRole() {
+  const badge  = document.getElementById('roleBadge');
+  const userEl = document.getElementById('tbUser');
+
+  if (role === 'gm') {
+    badge.textContent = '⚑ GM';
+    badge.className   = 'role-badge gm';
+    userEl.textContent = DB.passwords?.gmName || CONFIG.gmName;
+  } else if (role === 'char' && myCharId && DB.chars[myCharId]) {
+    badge.textContent = '▶ ' + DB.chars[myCharId].name.toUpperCase();
+    badge.className   = 'role-badge char';
+    userEl.textContent = DB.chars[myCharId].player;
+  } else {
+    badge.textContent = '▶ JOGADOR';
+    badge.className   = 'role-badge player';
+    userEl.textContent = 'AGENTE';
+  }
+
+  document.getElementById('btnAddNews').style.display = role === 'gm' ? '' : 'none';
+  document.getElementById('navMyChar').style.display  = role === 'char' ? '' : 'none';
+  document.getElementById('navRoster').style.display  = role === 'gm' ? '' : 'none';
+  document.getElementById('navGm').style.display      = role === 'gm' ? '' : 'none';
+}
+
+/* ════════════════════════════════════════
+   RENDER ALL
+════════════════════════════════════════ */
 function renderAll() {
   renderPubs();
   renderNews();
-  renderRoster();
+  if (role === 'gm') { renderRoster(); renderGmConsole(); }
+  if (role === 'char' && myCharId) renderSheet('myCharSheet', myCharId, true, false);
+}
+
+/* ════════════════════════════════════════
+   PUBLICAÇÕES
+   Regras de visibilidade:
+   - public    → todos veem
+   - exclusive → só chars cujo id está em allowedChars (+ GM)
+   - locked    → só GM
+════════════════════════════════════════ */
+function canSeePub(pub) {
+  if (role === 'gm') return true;
+  if (pub.status === 'public') return true;
+  if (pub.status === 'exclusive') return role === 'char' && pub.allowedChars.includes(myCharId);
+  return false; // locked
 }
 
 function renderPubs() {
   const grid = document.getElementById('pubGrid');
-  grid.innerHTML = DB.pubs.map(p => `
-    <div class="pub-card${p.status==='locked'?' locked':''}">
-      <div class="pub-num">${p.num} ${p.status==='locked'?'🔒':'→'}</div>
-      <div class="pub-title">${p.title}</div>
-      <div class="pub-desc">${p.desc}</div>
-    </div>
-  `).join('');
+  grid.innerHTML = DB.pubs.map(pub => {
+    if (role === 'gm') {
+      return `<div class="pub-card unlocked${pub.status==='exclusive'?' exclusive':''}">
+        <div class="pub-num">${pub.num} [${pub.status.toUpperCase()}]</div>
+        <div class="pub-title">${pub.title}</div>
+        <div class="pub-desc">${pub.desc}</div>
+        ${pub.status==='exclusive'?`<div class="pub-exclusive-tag">★ EXCLUSIVA — ${pub.allowedChars.length} char(s)</div>`:''}
+      </div>`;
+    }
+    if (!canSeePub(pub)) {
+      return `<div class="pub-card locked">
+        <div class="pub-num">${pub.num} 🔒</div>
+        <div class="pub-title">${pub.title}</div>
+        <div class="pub-desc">${pub.desc}</div>
+      </div>`;
+    }
+    return `<div class="pub-card unlocked${pub.status==='exclusive'?' exclusive':''}">
+      <div class="pub-num">${pub.num} →</div>
+      <div class="pub-title">${pub.title}</div>
+      <div class="pub-desc">${pub.desc}</div>
+      ${pub.status==='exclusive'?'<div class="pub-exclusive-tag">★ ACESSO EXCLUSIVO</div>':''}
+    </div>`;
+  }).join('');
 }
 
+/* ════════════════════════════════════════
+   NOTÍCIAS
+════════════════════════════════════════ */
 function renderNews() {
   const list = document.getElementById('newsList');
-  if (!DB.news.length) {
-    list.innerHTML = '<div class="empty-state">[ NENHUMA NOTÍCIA REGISTRADA ]</div>';
-    return;
-  }
+  if (!DB.news.length) { list.innerHTML='<div class="empty-state">[ NENHUMA NOTÍCIA ]</div>'; return; }
   list.innerHTML = DB.news.map((n,i) => `
     <div class="news-item">
       <div class="news-date">${n.date}</div>
@@ -877,22 +716,237 @@ function renderNews() {
         <div class="news-headline">${n.headline}</div>
         ${n.sub ? `<div class="news-sub">${n.sub}</div>` : ''}
       </div>
-      <div>${role==='gm'?`<button class="btn danger" style="font-size:9px;padding:2px 8px" onclick="deleteNews(${i})">✕</button>`:''}</div>
-    </div>
-  `).join('');
+      <div>${role==='gm' ? `<button class="btn danger" style="font-size:9px;padding:2px 6px" onclick="deleteNews(${i})">✕</button>` : ''}</div>
+    </div>`).join('');
 }
 
-/* ── CHARS ── */
+function openNewsForm()  { document.getElementById('newsForm').style.display=''; }
+function closeNewsForm() { document.getElementById('newsForm').style.display='none'; }
+
+async function submitNews() {
+  const head = document.getElementById('nHead').value.trim().toUpperCase();
+  if (!head) { toast('Manchete obrigatória','err'); return; }
+  DB.news.unshift({
+    date: document.getElementById('nDate').value.trim() || new Date().toLocaleDateString('pt-BR'),
+    headline: head,
+    sub: document.getElementById('nSub').value.trim()
+  });
+  ['nDate','nHead','nSub'].forEach(id => document.getElementById(id).value='');
+  closeNewsForm();
+  renderNews();
+  await dbSave();
+}
+
+async function deleteNews(i) { DB.news.splice(i,1); renderNews(); await dbSave(); }
+
+/* ════════════════════════════════════════
+   FICHA (renderizável em qualquer div)
+   targetId  : id do div container
+   charId    : qual personagem
+   canEdit   : jogador/GM pode editar campos
+   showGmNotes : só GM vê notas do GM
+════════════════════════════════════════ */
+function renderSheet(targetId, charId, canEdit, showGmNotes) {
+  const c = DB.chars[charId]; if (!c) return;
+  const target = document.getElementById(targetId);
+  const pct = c.hpCur / c.hpMax;
+  const hpCls = pct > .5 ? 'ok' : pct > .25 ? 'warn' : 'crit';
+
+  target.innerHTML = `
+  <div class="sheet">
+    <div class="sheet-header">
+      <div>
+        <div class="sheet-name">${c.name}</div>
+        <div class="sheet-role-line">${c.role.toUpperCase()} // ${c.player.toUpperCase()}</div>
+      </div>
+    </div>
+    <div class="sheet-tabs">
+      <div class="sheet-tab active" onclick="switchTab('${targetId}','combat')">COMBATE</div>
+      <div class="sheet-tab" onclick="switchTab('${targetId}','attrs')">ATRIBUTOS</div>
+      <div class="sheet-tab" onclick="switchTab('${targetId}','skills')">HABILIDADES</div>
+      <div class="sheet-tab" onclick="switchTab('${targetId}','gear')">EQUIPAMENTO</div>
+      <div class="sheet-tab" onclick="switchTab('${targetId}','notes')">NOTAS</div>
+    </div>
+
+    <!-- COMBATE -->
+    <div class="sheet-panel active" id="${targetId}-combat">
+      <div class="combat-row">
+        <div class="combat-box">
+          <div class="sec-label">HP ATUAL / MÁX</div>
+          <div class="hp-big ${hpCls}" id="${targetId}-hpNum">${c.hpCur}</div>
+          <div style="font-size:10px;color:var(--dim);margin:2px 0 8px">MÁX: ${c.hpMax}</div>
+          ${canEdit ? `
+          <div class="hp-controls">
+            <button onclick="adjHp('${charId}','${targetId}',-5)">-5</button>
+            <button onclick="adjHp('${charId}','${targetId}',-1)">-1</button>
+            <input type="number" id="${targetId}-hpDelta" value="1" min="1" max="999">
+            <button onclick="adjHpX('${charId}','${targetId}',-1)">−X</button>
+            <button onclick="adjHpX('${charId}','${targetId}',1)">+X</button>
+            <button onclick="adjHp('${charId}','${targetId}',1)">+1</button>
+            <button onclick="adjHp('${charId}','${targetId}',5)">+5</button>
+          </div>` : ''}
+        </div>
+        <div class="combat-box">
+          <div class="sec-label">ARMADURA / HUMANIDADE</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+            <div style="text-align:center">
+              <div style="font-size:26px;font-weight:700;color:var(--blue)">${c.armor}</div>
+              <div style="font-size:9px;color:var(--dim);margin-top:2px">SP</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-size:26px;font-weight:700;color:var(--yellow)">${c.humanity}</div>
+              <div style="font-size:9px;color:var(--dim);margin-top:2px">HUMANIDADE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ATRIBUTOS -->
+    <div class="sheet-panel" id="${targetId}-attrs">
+      <div class="sec-label">ATRIBUTOS PRIMÁRIOS</div>
+      ${canEdit
+        ? `<div class="attrs-display" style="margin-bottom:14px">
+            ${ATTRS.map(a => `<div class="attr-box">
+              <div class="attr-label">${a}</div>
+              <input type="number" min="1" max="10" value="${c.attrs[a]||0}"
+                style="background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--text);font-family:var(--head);font-size:20px;font-weight:700;width:100%;text-align:center;padding:2px 0"
+                onchange="DB.chars['${charId}'].attrs['${a}']=parseInt(this.value)||0">
+            </div>`).join('')}
+          </div>`
+        : `<div class="attrs-display" style="margin-bottom:14px">
+            ${ATTRS.map(a=>`<div class="attr-box"><div class="attr-label">${a}</div><div class="attr-val">${c.attrs[a]||'—'}</div></div>`).join('')}
+          </div>`
+      }
+    </div>
+
+    <!-- HABILIDADES -->
+    <div class="sheet-panel" id="${targetId}-skills">
+      <div class="sec-label">HABILIDADES</div>
+      ${canEdit
+        ? `<textarea id="${targetId}-skillsEdit" rows="4"
+              style="background:var(--panel);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:11px;padding:8px;width:100%;resize:vertical;margin-bottom:6px"
+              placeholder="Atletismo:6, Armas Curtas:7, Hacking:8"
+              >${Object.entries(c.skills||{}).map(([k,v])=>k+':'+v).join(', ')}</textarea>
+            <div style="font-size:9px;color:var(--dim);letter-spacing:1px">Formato: Nome:Valor separados por vírgula — salve para atualizar</div>`
+        : `<div class="skills-grid">
+            ${Object.keys(c.skills||{}).length
+              ? Object.entries(c.skills).map(([k,v])=>`<div class="skill-row"><span class="skill-name">${k}</span><span class="skill-val">${v}</span></div>`).join('')
+              : '<div style="font-size:11px;color:var(--dim);padding:8px">Nenhuma habilidade registrada.</div>'}
+          </div>`
+      }
+    </div>
+
+    <!-- EQUIPAMENTO -->
+    <div class="sheet-panel" id="${targetId}-gear">
+      <div class="sec-label">INVENTÁRIO</div>
+      <div id="${targetId}-gearList">${buildGearList(charId, canEdit, targetId)}</div>
+      ${canEdit ? `
+      <div class="gear-add-row">
+        <input id="${targetId}-gearName" placeholder="Nome do item">
+        <input id="${targetId}-gearTag" placeholder="Tag" style="max-width:90px">
+        <button class="btn ok" onclick="addGear('${charId}','${targetId}')">+</button>
+      </div>` : ''}
+    </div>
+
+    <!-- NOTAS -->
+    <div class="sheet-panel" id="${targetId}-notes">
+      <div class="notes-block">
+        <div class="notes-block-label player">✎ NOTAS DO JOGADOR</div>
+        <div class="notes-area" id="${targetId}-notesPlayer"
+          ${canEdit ? 'contenteditable="true"' : ''}
+          >${c.notes||''}</div>
+        ${canEdit ? '<div style="font-size:9px;color:var(--faint);margin-top:4px;letter-spacing:1px">[ CLIQUE PARA EDITAR — SALVE COM O BOTÃO ACIMA ]</div>' : ''}
+      </div>
+      ${showGmNotes ? `
+      <div class="notes-block">
+        <div class="notes-block-label gm">⚑ NOTAS DO GM — INVISÍVEL AO JOGADOR</div>
+        <div class="notes-area" contenteditable="true" id="${targetId}-notesGm">${c.gmNotes||''}</div>
+        <div style="font-size:9px;color:var(--faint);margin-top:4px;letter-spacing:1px">[ SOMENTE VISÍVEL PARA O GM ]</div>
+      </div>` : ''}
+    </div>
+  </div>`;
+}
+
+function buildGearList(charId, canEdit, targetId) {
+  const gear = DB.chars[charId].gear || [];
+  if (!gear.length) return '<div style="font-size:11px;color:var(--dim);padding:8px">Inventário vazio.</div>';
+  return gear.map((g,i) => `
+    <div class="gear-item">
+      <div><span class="gear-name">${g.name}</span>${g.tag?`<span class="gear-tag">${g.tag}</span>`:''}</div>
+      ${canEdit?`<button class="btn danger" style="font-size:9px;padding:1px 6px" onclick="removeGear('${charId}','${targetId}',${i})">✕</button>`:''}
+    </div>`).join('');
+}
+
+function switchTab(targetId, tab) {
+  const target = document.getElementById(targetId);
+  target.querySelectorAll('.sheet-panel').forEach(p => p.classList.remove('active'));
+  target.querySelectorAll('.sheet-tab').forEach((t,i) => {
+    t.classList.toggle('active', ['combat','attrs','skills','gear','notes'][i] === tab);
+  });
+  const panel = document.getElementById(`${targetId}-${tab}`);
+  if (panel) panel.classList.add('active');
+}
+
+/* HP */
+function adjHp(charId, targetId, delta) {
+  const c = DB.chars[charId]; if (!c) return;
+  c.hpCur = Math.max(0, Math.min(c.hpMax, c.hpCur + delta));
+  const el = document.getElementById(targetId+'-hpNum');
+  if (el) { el.textContent = c.hpCur; const p=c.hpCur/c.hpMax; el.className='hp-big '+(p>.5?'ok':p>.25?'warn':'crit'); }
+}
+function adjHpX(charId, targetId, sign) {
+  const v = parseInt(document.getElementById(targetId+'-hpDelta').value)||1;
+  adjHp(charId, targetId, sign*v);
+}
+
+/* Gear */
+function addGear(charId, targetId) {
+  const name = document.getElementById(targetId+'-gearName').value.trim(); if (!name) return;
+  const tag  = document.getElementById(targetId+'-gearTag').value.trim();
+  DB.chars[charId].gear = DB.chars[charId].gear||[];
+  DB.chars[charId].gear.push({name, tag});
+  document.getElementById(targetId+'-gearName').value='';
+  document.getElementById(targetId+'-gearTag').value='';
+  document.getElementById(targetId+'-gearList').innerHTML = buildGearList(charId, true, targetId);
+}
+function removeGear(charId, targetId, i) {
+  DB.chars[charId].gear.splice(i,1);
+  document.getElementById(targetId+'-gearList').innerHTML = buildGearList(charId, true, targetId);
+}
+
+/* Salvar ficha — coleta todos os campos editáveis */
+async function saveSheet(targetId, isGm) {
+  const charId = isGm ? currentCharId : myCharId;
+  if (!charId || !DB.chars[charId]) return;
+  const c = DB.chars[charId];
+
+  const notesEl = document.getElementById(targetId+'-notesPlayer');
+  if (notesEl) c.notes = notesEl.textContent;
+
+  const gmNotesEl = document.getElementById(targetId+'-notesGm');
+  if (gmNotesEl) c.gmNotes = gmNotesEl.textContent;
+
+  const skillsEl = document.getElementById(targetId+'-skillsEdit');
+  if (skillsEl) c.skills = parseSkills(skillsEl.value);
+
+  await dbSave();
+  if (isGm) renderRoster();
+}
+
+/* ════════════════════════════════════════
+   ROSTER (GM)
+════════════════════════════════════════ */
 function renderRoster() {
-  const grid = document.getElementById('rosterGrid');
+  const grid  = document.getElementById('rosterGrid');
   const empty = document.getElementById('rosterEmpty');
-  const ids = Object.keys(DB.chars);
+  const ids   = Object.keys(DB.chars);
   if (!ids.length) { grid.innerHTML=''; empty.style.display=''; return; }
   empty.style.display='none';
   grid.innerHTML = ids.map(id => {
-    const c = DB.chars[id];
-    const pct = Math.round((c.hpCur / c.hpMax) * 100);
-    const cls = pct > 50 ? 'ok' : pct > 25 ? 'warn' : 'crit';
+    const c   = DB.chars[id];
+    const pct = Math.round((c.hpCur/c.hpMax)*100);
+    const cls = pct>50?'ok':pct>25?'warn':'crit';
     return `<div class="char-card${id===currentCharId?' active':''}" onclick="openChar('${id}')">
       <div class="char-role">${c.role} // ${c.player}</div>
       <div class="char-name">${c.name}</div>
@@ -908,92 +962,33 @@ function renderRoster() {
 
 function openChar(id) {
   currentCharId = id;
-  currentSheetTab = 'combat';
-  showRoster(false);
-  renderSheet();
+  document.getElementById('rosterView').style.display    = 'none';
+  document.getElementById('sheetView').style.display     = '';
+  document.getElementById('charFormWrap').style.display  = 'none';
+  document.getElementById('btnBackRoster').style.display = '';
+  // GM vê tudo, pode editar, e vê notas do GM
+  renderSheet('gmCharSheet', id, true, true);
 }
 
-function showRoster(show=true) {
-  document.getElementById('rosterView').style.display = show ? '' : 'none';
-  document.getElementById('sheetView').style.display = show ? 'none' : '';
-  document.getElementById('charFormWrap').style.display = 'none';
-  document.getElementById('btnBackRoster').style.display = show ? 'none' : '';
-  if (show) renderRoster();
-}
-
-function renderSheet() {
-  const c = DB.chars[currentCharId]; if (!c) return;
-  document.getElementById('sName').textContent = c.name;
-  document.getElementById('sRole').textContent = c.role.toUpperCase() + ' // ' + c.player.toUpperCase();
-  document.getElementById('sPlayer').textContent = 'JOGADOR: ' + c.player;
-  const pct = c.hpCur / c.hpMax;
-  const cls = pct > .5 ? 'ok' : pct > .25 ? 'warn' : 'crit';
-  document.getElementById('sHpNum').textContent = c.hpCur;
-  document.getElementById('sHpNum').className = 'hp-big ' + cls;
-  document.getElementById('sHpMax').textContent = 'MÁX: ' + c.hpMax;
-  document.getElementById('sArmor').textContent = c.armor;
-  document.getElementById('sHumanity').textContent = c.humanity;
-  document.getElementById('sAttrsGrid').innerHTML = ATTRS.map(a =>
-    `<div class="attr-box"><div class="attr-label">${a}</div><div class="attr-val">${c.attrs[a]||'—'}</div></div>`
-  ).join('');
-  const skills = c.skills || {};
-  document.getElementById('sSkillsGrid').innerHTML = Object.keys(skills).length
-    ? Object.entries(skills).map(([k,v])=>`<div class="skill-row"><span class="skill-name">${k}</span><span class="skill-val">${v}</span></div>`).join('')
-    : '<div style="font-size:11px;color:var(--c-dim);padding:8px">Nenhuma habilidade.</div>';
-  const gear = c.gear || [];
-  document.getElementById('sGearList').innerHTML = gear.length
-    ? gear.map((g,i)=>`<div class="gear-item"><div><span class="gear-name">${g.name}</span>${g.tag?`<span class="gear-tag">${g.tag}</span>`:''}</div><button class="btn danger" style="font-size:9px;padding:1px 6px" onclick="removeGear(${i})">✕</button></div>`).join('')
-    : '<div style="font-size:11px;color:var(--c-dim);padding:8px">Inventário vazio.</div>';
-  document.getElementById('sNotes').textContent = c.notes || '';
-  switchSheetTab(currentSheetTab);
-}
-
-function switchSheetTab(tab) {
-  currentSheetTab = tab;
-  document.querySelectorAll('.sheet-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.sheet-tab').forEach((t,i) => {
-    const tabs = ['combat','attrs','skills','gear','notes'];
-    t.classList.toggle('active', tabs[i] === tab);
-  });
-  document.getElementById('sp-' + tab).classList.add('active');
-}
-
-function adjHp(delta) {
-  const c = DB.chars[currentCharId]; if (!c) return;
-  c.hpCur = Math.max(0, Math.min(c.hpMax, c.hpCur + delta));
-  renderSheet();
-}
-function adjHpX(sign) {
-  const v = parseInt(document.getElementById('hpDelta').value) || 1;
-  adjHp(sign * v);
-}
-
-function addGear() {
-  const name = document.getElementById('gearName').value.trim(); if (!name) return;
-  const tag  = document.getElementById('gearTag').value.trim();
-  DB.chars[currentCharId].gear = DB.chars[currentCharId].gear || [];
-  DB.chars[currentCharId].gear.push({name, tag});
-  document.getElementById('gearName').value = '';
-  document.getElementById('gearTag').value = '';
-  renderSheet();
-}
-function removeGear(i) { DB.chars[currentCharId].gear.splice(i,1); renderSheet(); }
-
-async function saveChar() {
-  DB.chars[currentCharId].notes = document.getElementById('sNotes').textContent;
-  await dbSave();
+function showRoster() {
+  currentCharId = null;
+  document.getElementById('rosterView').style.display    = '';
+  document.getElementById('sheetView').style.display     = 'none';
+  document.getElementById('charFormWrap').style.display  = 'none';
+  document.getElementById('btnBackRoster').style.display = 'none';
   renderRoster();
 }
 
 async function deleteChar() {
-  if (!confirm('Deletar agente ' + DB.chars[currentCharId]?.name + '?')) return;
+  if (!confirm('Deletar '+DB.chars[currentCharId]?.name+'?')) return;
+  delete DB.passwords.chars[currentCharId];
   delete DB.chars[currentCharId];
   currentCharId = null;
   await dbSave();
   showRoster();
 }
 
-/* CHAR FORM */
+/* ── Formulário de personagem (GM) ── */
 function buildAttrInputs() {
   document.getElementById('attrInputs').innerHTML = ATTRS.map(a =>
     `<div class="field"><label>${a}</label><input id="a${a}" type="number" placeholder="5" min="1" max="10"></div>`
@@ -1002,125 +997,167 @@ function buildAttrInputs() {
 
 function openCharForm(editing=false) {
   editingChar = editing;
-  showRoster(false);
-  document.getElementById('charFormWrap').style.display = '';
-  document.getElementById('sheetView').style.display = 'none';
-  document.getElementById('charFormTitle').textContent =
-    editing ? '// EDITAR AGENTE //' : '// REGISTRAR NOVO AGENTE //';
+  document.getElementById('rosterView').style.display    = 'none';
+  document.getElementById('sheetView').style.display     = 'none';
+  document.getElementById('charFormWrap').style.display  = '';
+  document.getElementById('btnBackRoster').style.display = '';
+  document.getElementById('charFormTitle').textContent   = editing ? '// EDITAR AGENTE //' : '// REGISTRAR NOVO AGENTE //';
   buildAttrInputs();
+
   if (editing && currentCharId) {
     const c = DB.chars[currentCharId];
-    document.getElementById('fName').value    = c.name;
-    document.getElementById('fPlayer').value  = c.player;
-    document.getElementById('fRole').value    = c.role;
-    document.getElementById('fHpMax').value   = c.hpMax;
-    document.getElementById('fArmor').value   = c.armor;
-    document.getElementById('fHumanity').value= c.humanity;
+    document.getElementById('fName').value     = c.name;
+    document.getElementById('fPlayer').value   = c.player;
+    document.getElementById('fRole').value     = c.role;
+    document.getElementById('fHpMax').value    = c.hpMax;
+    document.getElementById('fArmor').value    = c.armor;
+    document.getElementById('fHumanity').value = c.humanity;
+    document.getElementById('fPw').value       = DB.passwords.chars[currentCharId] || '';
     ATTRS.forEach(a => { const el=document.getElementById('a'+a); if(el) el.value=c.attrs[a]||''; });
-    const s = c.skills||{};
-    document.getElementById('fSkills').value  = Object.entries(s).map(([k,v])=>k+':'+v).join(', ');
-    document.getElementById('fNotes').value   = c.notes||'';
+    document.getElementById('fSkills').value   = Object.entries(c.skills||{}).map(([k,v])=>k+':'+v).join(', ');
+    document.getElementById('fGmNotes').value  = c.gmNotes||'';
   } else {
-    ['fName','fPlayer','fHpMax','fArmor','fHumanity','fSkills','fNotes'].forEach(id=>{
-      const el=document.getElementById(id); if(el) el.value='';
+    ['fName','fPlayer','fHpMax','fArmor','fHumanity','fPw','fSkills','fGmNotes'].forEach(id => {
+      const el = document.getElementById(id); if(el) el.value='';
     });
   }
 }
 
 function closeCharForm() {
   document.getElementById('charFormWrap').style.display = 'none';
-  if (currentCharId) { document.getElementById('sheetView').style.display=''; renderSheet(); }
+  if (currentCharId) openChar(currentCharId);
   else showRoster();
-}
-
-function parseSkills(str) {
-  const out = {};
-  str.split(',').forEach(s => {
-    const p = s.trim().split(':');
-    if (p.length>=2) { const k=p[0].trim(), v=parseInt(p[1]); if(k&&!isNaN(v)) out[k]=v; }
-  });
-  return out;
 }
 
 async function submitChar() {
   const name   = document.getElementById('fName').value.trim();
   const player = document.getElementById('fPlayer').value.trim();
+  const pw     = document.getElementById('fPw').value.trim().toUpperCase();
   if (!name||!player) { toast('Nome e jogador são obrigatórios','err'); return; }
-  const hpMax  = parseInt(document.getElementById('fHpMax').value)||40;
-  const attrs  = {};
-  ATTRS.forEach(a=>{ const el=document.getElementById('a'+a); attrs[a]=el?parseInt(el.value)||0:0; });
-  const id = editingChar ? currentCharId : 'char_' + Date.now();
-  const prev = editingChar ? DB.chars[id] : {};
+  if (!pw) { toast('Defina uma senha para o personagem','err'); return; }
+
+  const hpMax = parseInt(document.getElementById('fHpMax').value)||40;
+  const attrs = {}; ATTRS.forEach(a=>{ const el=document.getElementById('a'+a); attrs[a]=el?parseInt(el.value)||0:0; });
+  const id   = editingChar ? currentCharId : 'char_'+Date.now();
+  const prev = editingChar ? (DB.chars[id]||{}) : {};
+
   DB.chars[id] = {
-    name, player, role: document.getElementById('fRole').value,
-    hpMax, hpCur: editingChar ? (prev.hpCur||hpMax) : hpMax,
-    armor: parseInt(document.getElementById('fArmor').value)||0,
+    name, player,
+    role:     document.getElementById('fRole').value,
+    hpMax,    hpCur: editingChar?(prev.hpCur||hpMax):hpMax,
+    armor:    parseInt(document.getElementById('fArmor').value)||0,
     humanity: parseInt(document.getElementById('fHumanity').value)||70,
-    attrs, skills: parseSkills(document.getElementById('fSkills').value),
-    notes: document.getElementById('fNotes').value,
-    gear: editingChar ? (prev.gear||[]) : []
+    attrs,    skills:   parseSkills(document.getElementById('fSkills').value),
+    notes:    editingChar?(prev.notes||''):'',
+    gmNotes:  document.getElementById('fGmNotes').value,
+    gear:     editingChar?(prev.gear||[]):[]
   };
+
+  DB.passwords.chars[id] = pw;
   currentCharId = id;
   await dbSave();
   document.getElementById('charFormWrap').style.display='none';
-  document.getElementById('sheetView').style.display='';
-  renderSheet();
+  openChar(id);
   renderRoster();
+  renderGmConsole(); // atualiza lista de senhas e checkboxes
 }
 
-/* ── NEWS ── */
-function openNewsModal()  { document.getElementById('newsModal').style.display='flex'; }
-function closeNewsModal() { document.getElementById('newsModal').style.display='none'; }
-async function submitNews() {
-  const head = document.getElementById('nHead').value.trim().toUpperCase();
-  if (!head) { toast('Manchete obrigatória','err'); return; }
-  DB.news.unshift({
-    date: document.getElementById('nDate').value.trim() || new Date().toLocaleDateString('pt-BR'),
-    headline: head,
-    sub: document.getElementById('nSub').value.trim()
-  });
-  document.getElementById('nDate').value='';
-  document.getElementById('nHead').value='';
-  document.getElementById('nSub').value='';
-  closeNewsModal();
-  renderNews();
-  await dbSave();
-}
-async function deleteNews(i) {
-  DB.news.splice(i,1);
-  renderNews();
-  await dbSave();
+/* ════════════════════════════════════════
+   GM CONSOLE
+════════════════════════════════════════ */
+function renderGmConsole() {
+  renderCharPwList();
+  renderPubAssignList();
 }
 
-/* ── PUBS ── */
-async function addPub() {
-  const title = document.getElementById('pubTitle').value.trim(); if (!title) return;
-  DB.pubs.push({
-    num:    document.getElementById('pubNum').value.trim() || 'P'+String(DB.pubs.length+1).padStart(2,'0'),
-    title,
-    desc:   document.getElementById('pubDesc').value.trim(),
-    status: document.getElementById('pubStatus').value,
-  });
-  ['pubNum','pubTitle','pubDesc'].forEach(id=>document.getElementById(id).value='');
+/* Lista de senhas por personagem */
+function renderCharPwList() {
+  const el  = document.getElementById('charPwList');
+  const ids = Object.keys(DB.chars);
+  if (!ids.length) { el.innerHTML='<div style="font-size:11px;color:var(--dim)">Nenhum personagem cadastrado ainda.</div>'; return; }
+  el.innerHTML = ids.map(id => {
+    const c  = DB.chars[id];
+    const pw = DB.passwords.chars[id]||'';
+    return `<div class="char-pw-row">
+      <div class="char-pw-name">${c.name}</div>
+      <div class="char-pw-player">jogador: ${c.player}</div>
+      <input class="char-pw-input" id="pw-${id}" value="${pw}" placeholder="SENHA" autocomplete="off">
+      <button class="btn yellow" style="font-size:9px;padding:3px 10px" onclick="saveCharPw('${id}')">SALVAR</button>
+    </div>`;
+  }).join('');
+}
+
+async function saveCharPw(id) {
+  const val = document.getElementById('pw-'+id).value.trim().toUpperCase();
+  if (!val) { toast('Senha não pode ser vazia','err'); return; }
+  DB.passwords.chars[id] = val;
+  await dbSave();
+  toast('Senha de '+DB.chars[id].name+' atualizada','ok');
+}
+
+/* Checkboxes de publicações exclusivas */
+function renderPubAssignList() {
+  const el      = document.getElementById('pubAssignList');
+  const charIds = Object.keys(DB.chars);
+  if (!charIds.length) { el.innerHTML='<div style="font-size:11px;color:var(--dim)">Cadastre personagens primeiro.</div>'; return; }
+  el.innerHTML = DB.pubs.map((pub, pi) => `
+    <div class="pub-assign-row">
+      <div class="pub-assign-name">${pub.num} — ${pub.title}</div>
+      <div class="pub-assign-status">[${pub.status}]</div>
+      <div class="char-checkbox-list">
+        ${charIds.map(id=>`
+          <label>
+            <input type="checkbox" ${pub.allowedChars.includes(id)?'checked':''}
+              onchange="togglePubChar(${pi},'${id}',this.checked)">
+            ${DB.chars[id].name}
+          </label>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+async function togglePubChar(pi, charId, checked) {
+  const pub = DB.pubs[pi];
+  if (checked) {
+    if (!pub.allowedChars.includes(charId)) pub.allowedChars.push(charId);
+    pub.status = 'exclusive'; // promove automaticamente para exclusive
+  } else {
+    pub.allowedChars = pub.allowedChars.filter(id => id !== charId);
+    if (!pub.allowedChars.length && pub.status === 'exclusive') pub.status = 'locked';
+  }
   renderPubs();
   await dbSave();
 }
 
-/* ── DICE ── */
+async function addPub() {
+  const title = document.getElementById('pubTitle').value.trim(); if (!title) return;
+  DB.pubs.push({
+    num:  document.getElementById('pubNum').value.trim() || 'P'+String(DB.pubs.length+1).padStart(2,'0'),
+    title,
+    desc: document.getElementById('pubDesc').value.trim(),
+    status: document.getElementById('pubStatus').value,
+    allowedChars: []
+  });
+  ['pubNum','pubTitle','pubDesc'].forEach(id => document.getElementById(id).value='');
+  renderPubs();
+  renderPubAssignList();
+  await dbSave();
+}
+
+/* Dados */
 function rollDice(sides) {
   const r = Math.floor(Math.random()*sides)+1;
   document.getElementById('diceResult').textContent = r;
-  document.getElementById('diceLabel').textContent = `D${sides} → ${r}`;
+  document.getElementById('diceLabel').textContent  = `D${sides} → ${r}`;
 }
 function rollMulti() {
-  const qty = parseInt(document.getElementById('diceQty').value)||2;
-  const rolls = Array.from({length:qty},()=>Math.floor(Math.random()*10)+1);
-  const sum = rolls.reduce((a,b)=>a+b,0);
+  const qty   = parseInt(document.getElementById('diceQty').value)||2;
+  const rolls = Array.from({length:qty}, () => Math.floor(Math.random()*10)+1);
+  const sum   = rolls.reduce((a,b)=>a+b,0);
   document.getElementById('diceResult').textContent = sum;
-  document.getElementById('diceLabel').textContent = `${qty}D10: [${rolls.join(', ')}] = ${sum}`;
+  document.getElementById('diceLabel').textContent  = `${qty}D10: [${rolls.join(', ')}] = ${sum}`;
 }
 
-/* ── GM CONFIG ── */
+/* Senhas globais */
 async function savePasswords() {
   const gm = document.getElementById('cfgGmPw').value.trim();
   const pl = document.getElementById('cfgPlPw').value.trim();
@@ -1128,10 +1165,9 @@ async function savePasswords() {
   if (gm) DB.passwords.gm = gm;
   if (pl) DB.passwords.player = pl;
   if (nm) DB.passwords.gmName = nm;
-  document.getElementById('cfgGmPw').value='';
-  document.getElementById('cfgPlPw').value='';
+  ['cfgGmPw','cfgPlPw'].forEach(id => document.getElementById(id).value='');
   await dbSave();
-  toast('Senhas atualizadas','ok');
+  toast('Senhas globais atualizadas','ok');
 }
 
 function saveJsonbinConfig() {
@@ -1139,22 +1175,25 @@ function saveJsonbinConfig() {
   const bin = document.getElementById('cfgBinId').value.trim();
   if (key) { JSONBIN.apiKey=key; localStorage.setItem('dt_apikey',key); }
   if (bin) { JSONBIN.binId=bin;  localStorage.setItem('dt_binid',bin); }
-  document.getElementById('cfgApiKey').value='';
-  document.getElementById('cfgBinId').value='';
-  toast('JSONBin configurado — recarregue para sincronizar','ok');
+  ['cfgApiKey','cfgBinId'].forEach(id => document.getElementById(id).value='');
+  toast('JSONBin configurado — recarregue','ok');
 }
 
-/* ══════════════════════════════════════════
+/* ════════════════════════════════════════
    INIT
-══════════════════════════════════════════ */
+════════════════════════════════════════ */
 (async function init() {
   document.getElementById('loading').style.display = 'flex';
+  // Tenta carregar credenciais salvas localmente (do GM)
+  const lk = localStorage.getItem('dt_apikey');
+  const lb = localStorage.getItem('dt_binid');
+  if (lk) JSONBIN.apiKey = lk;
+  if (lb) JSONBIN.binId  = lb;
   const loaded = await dbLoad();
-
   document.getElementById('loading').style.display = 'none';
   setSaveStatus(loaded ? 'DB CONECTADO' : '[ CONFIGURE JSONBIN NO GM CONSOLE ]');
   updateClock();
-  setInterval(updateClock, 10000);
+  setInterval(updateClock, 30000);
 })();
 </script>
 </body>
