@@ -190,11 +190,73 @@ body{font-family:var(--mono);font-size:13px;color:var(--text)}
 .empty-state{font-size:11px;color:var(--dim);padding:24px;text-align:center;border:1px solid var(--faint);letter-spacing:1px}
 footer{background:var(--panel);border-top:1px solid var(--border);padding:16px 20px;font-size:10px;color:var(--dim);display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between}
 #loading{position:fixed;inset:0;background:var(--bg);z-index:500;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--dim);letter-spacing:3px;text-transform:uppercase}
+
+/* ── CRÉDITOS (topbar widget) ── */
+.credits-widget{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid #1d9e7544;padding:4px 12px}
+.credits-icon{font-size:12px;color:var(--green)}
+.credits-amount{font-family:var(--head);font-size:13px;color:var(--green);letter-spacing:1px}
+.credits-label{font-size:9px;color:var(--dim);letter-spacing:2px}
+
+/* ── MERCADOS (terminal page) ── */
+.market-section{margin-top:28px}
+.market-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.market-name{font-family:var(--head);font-size:14px;letter-spacing:3px;color:var(--yellow)}
+.market-desc{font-size:10px;color:var(--dim);letter-spacing:1px;margin-bottom:14px}
+.market-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:8px}
+
+/* ── ITEM CARD ── */
+.item-card{background:var(--surface);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:border-color .15s}
+.item-card:hover{border-color:var(--text)}
+.item-card.out-of-stock{opacity:.45;cursor:default}
+.item-img{width:100%;height:130px;object-fit:cover;display:block;background:var(--panel);border-bottom:1px solid var(--border)}
+.item-img-placeholder{width:100%;height:130px;background:var(--panel);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--faint)}
+.item-body{padding:10px 12px}
+.item-name{font-size:12px;color:var(--text);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.item-desc-short{font-size:10px;color:var(--muted);line-height:1.5;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.item-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.item-price{font-family:var(--head);font-size:13px;color:var(--green);letter-spacing:1px}
+.item-price.cant-afford{color:var(--red)}
+.item-stock{font-size:9px;color:var(--dim);letter-spacing:1px}
+
+/* ── ITEM DETAIL MODAL ── */
+#itemModal{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:800;display:none;align-items:center;justify-content:center;padding:16px}
+.item-modal-box{background:var(--surface);border:1px solid var(--border);width:100%;max-width:540px;max-height:90vh;overflow-y:auto}
+.item-modal-img{width:100%;height:200px;object-fit:cover;display:block;background:var(--panel)}
+.item-modal-img-ph{width:100%;height:200px;background:var(--panel);display:flex;align-items:center;justify-content:center;font-size:48px;color:var(--faint)}
+.item-modal-body{padding:16px}
+.item-modal-name{font-family:var(--head);font-size:18px;letter-spacing:2px;color:var(--text);margin-bottom:4px}
+.item-modal-market{font-size:9px;color:var(--yellow);letter-spacing:2px;margin-bottom:12px}
+.item-modal-desc{font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:14px;white-space:pre-wrap}
+.item-modal-footer{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--faint)}
+.item-modal-price{font-family:var(--head);font-size:20px;color:var(--green)}
+.item-modal-price.cant-afford{color:var(--red)}
+.checkout-confirm{background:var(--panel);border:1px solid var(--green);padding:10px;margin-top:12px;font-size:11px;color:var(--green);letter-spacing:1px;display:none}
+
+/* ── TRANSFER MODAL ── */
+#transferModal{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:800;display:none;align-items:center;justify-content:center;padding:16px}
+.transfer-box{background:var(--surface);border:1px solid var(--border);width:100%;max-width:400px;padding:20px}
+
+/* ── GM: CREDIT MANAGEMENT ── */
+.credit-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--faint);font-size:11px;flex-wrap:wrap}
+.credit-row:last-child{border-bottom:none}
+.credit-char-name{color:var(--text);min-width:110px;font-weight:700}
+.credit-char-player{color:var(--muted);font-size:10px;flex:1}
+.credit-balance{font-family:var(--head);font-size:13px;color:var(--green);min-width:90px;text-align:right}
+.credit-input{background:var(--panel);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:11px;padding:3px 6px;width:90px;text-align:right}
+.credit-input:focus{outline:none;border-color:var(--green)}
+
+/* ── GM: MARKET BUILDER ── */
+.market-list-item{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--faint);font-size:11px;flex-wrap:wrap}
+.market-list-item:last-child{border-bottom:none}
+.market-list-name{color:var(--yellow);font-weight:700;min-width:120px}
+.market-list-items{color:var(--dim);font-size:10px;flex:1}
+
 @media(max-width:600px){
   .form-row{grid-template-columns:1fr}
   .combat-row{grid-template-columns:1fr}
   .news-item{grid-template-columns:1fr;gap:4px}
   .main{padding:12px}
+  .market-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -227,6 +289,14 @@ footer{background:var(--panel);border-top:1px solid var(--border);padding:16px 2
       </div>
     </div>
     <div class="topbar-right">
+      <div class="credits-widget" id="creditsWidget" style="display:none">
+        <span class="credits-icon">₵</span>
+        <div>
+          <div class="credits-amount" id="creditsAmount">0</div>
+          <div class="credits-label">CRÉDITOS</div>
+        </div>
+        <button class="btn ok" style="font-size:9px;padding:3px 8px" onclick="openTransferModal()">↔ TRANS</button>
+      </div>
       <span class="role-badge" id="roleBadge">--</span>
       <button class="btn" onclick="doLogout()">LOG OUT</button>
     </div>
@@ -258,6 +328,8 @@ footer{background:var(--panel);border-top:1px solid var(--border);padding:16px 2
       </div>
       <div class="sec-label">// PUBLICAÇÕES DISPONÍVEIS //</div>
       <div class="pub-grid" id="pubGrid"></div>
+      <!-- MERCADOS (injetados dinamicamente) -->
+      <div id="marketsContainer"></div>
     </div>
 
     <!-- NOTÍCIAS -->
@@ -368,6 +440,53 @@ footer{background:var(--panel);border-top:1px solid var(--border);padding:16px 2
       <div class="sec-label">// GM CONSOLE — ACESSO RESTRITO //</div>
       <div class="gm-grid">
 
+        <!-- Créditos por personagem -->
+        <div class="gm-card" style="grid-column:1/-1">
+          <div class="gm-card-title">Gerenciar créditos dos agentes</div>
+          <div style="font-size:9px;color:var(--dim);letter-spacing:1px;margin-bottom:10px;line-height:1.6">
+            Adicione ou defina o saldo de cada personagem. Apenas o GM pode injetar créditos.
+          </div>
+          <div id="creditsList"></div>
+        </div>
+
+        <!-- Criar mercado -->
+        <div class="gm-card" style="grid-column:1/-1">
+          <div class="gm-card-title">Criar / gerenciar mercados</div>
+          <div style="font-size:9px;color:var(--dim);letter-spacing:1px;margin-bottom:12px;line-height:1.6">
+            Cada mercado aparece como uma seção na aba Terminal. Adicione itens com imagem, descrição e preço.
+          </div>
+          <!-- Lista de mercados existentes -->
+          <div id="marketAdminList" style="margin-bottom:14px"></div>
+          <!-- Form novo mercado -->
+          <div style="background:var(--panel);border:1px solid #ef9f2722;padding:12px;margin-bottom:12px">
+            <div style="font-size:9px;color:var(--yellow);letter-spacing:2px;margin-bottom:10px">NOVO MERCADO</div>
+            <div class="form-row">
+              <div class="field"><label>Nome do mercado</label><input id="mktName" placeholder="Ex: Netshop Arasaka"></div>
+              <div class="field"><label>Descrição curta</label><input id="mktDesc" placeholder="Ex: Implantes e armas corporativas"></div>
+            </div>
+            <button class="btn yellow" onclick="createMarket()">CRIAR MERCADO</button>
+          </div>
+          <!-- Form novo item -->
+          <div style="background:var(--panel);border:1px solid #ef9f2722;padding:12px" id="itemFormWrap">
+            <div style="font-size:9px;color:var(--yellow);letter-spacing:2px;margin-bottom:10px">ADICIONAR ITEM AO MERCADO</div>
+            <div class="form-row">
+              <div class="field">
+                <label>Mercado destino</label>
+                <select id="itemTargetMarket" style="background:var(--panel);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:6px 10px;width:100%"></select>
+              </div>
+              <div class="field"><label>Nome do item</label><input id="itemName" placeholder="Ex: Pistola Militech M-10AF"></div>
+            </div>
+            <div class="field"><label>Descrição completa</label><textarea id="itemDesc" rows="3" placeholder="Descrição detalhada do item, estatísticas, lore..." style="resize:vertical"></textarea></div>
+            <div class="form-row">
+              <div class="field"><label>Preço (₵)</label><input id="itemPrice" type="number" placeholder="500" min="0"></div>
+              <div class="field"><label>Estoque (-1 = ilimitado)</label><input id="itemStock" type="number" placeholder="-1" value="-1"></div>
+            </div>
+            <div class="field"><label>URL da imagem (opcional)</label><input id="itemImg" placeholder="https://... (deixe vazio para ícone)"></div>
+            <div class="field"><label>Ícone emoji (se sem imagem)</label><input id="itemIcon" placeholder="🔫" style="font-size:20px;width:60px"></div>
+            <button class="btn yellow" onclick="addItemToMarket()">ADICIONAR ITEM</button>
+          </div>
+        </div>
+
         <!-- Senhas dos personagens -->
         <div class="gm-card" style="grid-column:1/-1">
           <div class="gm-card-title">Credenciais dos personagens</div>
@@ -453,14 +572,65 @@ footer{background:var(--panel);border-top:1px solid var(--border);padding:16px 2
 
 <div id="toast"></div>
 
+<!-- ITEM DETAIL MODAL -->
+<div id="itemModal">
+  <div class="item-modal-box">
+    <div id="itemModalImg"></div>
+    <div class="item-modal-body">
+      <div class="item-modal-name" id="itemModalName"></div>
+      <div class="item-modal-market" id="itemModalMarket"></div>
+      <div class="item-modal-desc" id="itemModalDesc"></div>
+      <div class="item-modal-footer">
+        <div>
+          <div class="item-modal-price" id="itemModalPrice"></div>
+          <div style="font-size:9px;color:var(--dim);margin-top:2px" id="itemModalStock"></div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <div style="font-size:10px;color:var(--dim)">Qtd:
+            <input type="number" id="itemQty" value="1" min="1" max="99"
+              style="background:var(--panel);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:3px 6px;width:52px;margin-left:4px"
+              oninput="updateCheckoutPrice()">
+          </div>
+          <button class="btn ok" id="btnCheckout" onclick="doCheckout()">COMPRAR</button>
+          <button class="btn" onclick="closeItemModal()">FECHAR</button>
+        </div>
+      </div>
+      <div class="checkout-confirm" id="checkoutConfirm"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRANSFER MODAL -->
+<div id="transferModal">
+  <div class="transfer-box">
+    <div class="gm-card-title">// TRANSFERIR CRÉDITOS //</div>
+    <div style="font-size:10px;color:var(--dim);letter-spacing:1px;margin-bottom:14px;line-height:1.6">
+      Seu saldo: <span class="credits-amount" id="transferMyBalance" style="font-size:12px">0</span> ₵
+    </div>
+    <div class="field">
+      <label>Destino</label>
+      <select id="transferTarget" style="background:var(--panel);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:6px 10px;width:100%"></select>
+    </div>
+    <div class="field">
+      <label>Valor (₵)</label>
+      <input type="number" id="transferAmount" min="1" placeholder="100" style="background:var(--panel);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:6px 10px;width:100%">
+    </div>
+    <div style="display:flex;gap:8px;margin-top:4px">
+      <button class="btn ok" onclick="doTransfer()">TRANSFERIR</button>
+      <button class="btn" onclick="closeTransferModal()">CANCELAR</button>
+    </div>
+    <div id="transferMsg" style="font-size:10px;margin-top:8px;letter-spacing:1px;min-height:16px"></div>
+  </div>
+</div>
+
 <script>
 /* ════════════════════════════════════════
    CONFIG — edite antes de subir
 ════════════════════════════════════════ */
 const CONFIG = {
-  defaultGmPw:     'REQUIEM',
-  defaultPlayerPw: 'AGENTE001',
-  gmName:          'Mastermind',
+  defaultGmPw:     'MESTRE2077',
+  defaultPlayerPw: 'EDGERUNNER',
+  gmName:          'Narrador',
 };
 
 /* Cole suas credenciais JSONBin aqui (fixas para todos os usuários) */
@@ -493,18 +663,35 @@ let DB = {
     {date:'14 Jan 2045 // 08:00', headline:'BIOTECHNICA ADIA LANÇAMENTO DA SECURICINE', sub:'O combat-drug chegará um mês atrasado.'},
     {date:'25 Fev 2045 // 06:00', headline:'CIBERPSICOSE EM VILLE-MARIE — 7 MORTOS',    sub:'12 feridos segundo relatório da SPVM.'},
   ],
-  chars: {}
+  chars: {},
   /*
     charId: {
       name, player, role,
       hpMax, hpCur, armor, humanity,
-      attrs: { INT, REF, DEX, TECH, COOL, WILL, LUCK, MOVE, BODY, EMP },
-      skills: { "Atletismo": 6, ... },
-      gear: [ { name, tag } ],
-      notes: "",     ← escrito pelo jogador, lido pelo GM
-      gmNotes: "",   ← escrito pelo GM, invisível ao jogador
+      attrs, skills, gear,
+      notes, gmNotes,
+      credits: 0     ← saldo de créditos do personagem
     }
   */
+  markets: [],
+  /*
+    market: {
+      id: 'mkt_timestamp',
+      name: 'Netshop Arasaka',
+      desc: 'Implantes corporativos',
+      items: [
+        {
+          id: 'item_timestamp',
+          name, desc, price,
+          stock,   // -1 = ilimitado
+          img,     // url ou ''
+          icon     // emoji fallback
+        }
+      ]
+    }
+  */
+  credits: {}
+  /* { charId: number } — saldo separado do char para facilitar sync */
 };
 
 /* ════════════════════════════════════════
@@ -530,9 +717,11 @@ async function dbLoad() {
     if (j.record) {
       const rec = j.record;
       if (rec.passwords) { DB.passwords = rec.passwords; if (!DB.passwords.chars) DB.passwords.chars = {}; }
-      if (rec.pubs)  { DB.pubs  = rec.pubs;  DB.pubs.forEach(p=>{ if(!p.allowedChars) p.allowedChars=[]; }); }
-      if (rec.news)  DB.news  = rec.news;
-      if (rec.chars) DB.chars = rec.chars;
+      if (rec.pubs)    { DB.pubs    = rec.pubs;    DB.pubs.forEach(p=>{ if(!p.allowedChars) p.allowedChars=[]; }); }
+      if (rec.news)    DB.news    = rec.news;
+      if (rec.chars)   DB.chars   = rec.chars;
+      if (rec.markets) DB.markets = rec.markets;
+      if (rec.credits) DB.credits = rec.credits;
     }
     return true;
   } catch(e) { console.error('dbLoad:', e); return false; }
@@ -650,6 +839,15 @@ function applyRole() {
   document.getElementById('navMyChar').style.display  = role === 'char' ? '' : 'none';
   document.getElementById('navRoster').style.display  = role === 'gm' ? '' : 'none';
   document.getElementById('navGm').style.display      = role === 'gm' ? '' : 'none';
+
+  // créditos — visível para chars e GM (GM não tem saldo mas vê o widget de gestão)
+  const cw = document.getElementById('creditsWidget');
+  if (role === 'char' && myCharId) {
+    cw.style.display = '';
+    updateCreditsDisplay();
+  } else {
+    cw.style.display = 'none';
+  }
 }
 
 /* ════════════════════════════════════════
@@ -658,6 +856,7 @@ function applyRole() {
 function renderAll() {
   renderPubs();
   renderNews();
+  renderMarkets();
   if (role === 'gm') { renderRoster(); renderGmConsole(); }
   if (role === 'char' && myCharId) renderSheet('myCharSheet', myCharId, true, false);
 }
@@ -1068,6 +1267,9 @@ async function submitChar() {
 function renderGmConsole() {
   renderCharPwList();
   renderPubAssignList();
+  renderCreditsList();
+  renderMarketAdminList();
+  populateMarketSelect();
 }
 
 /* Lista de senhas por personagem */
@@ -1177,6 +1379,313 @@ function saveJsonbinConfig() {
   if (bin) { JSONBIN.binId=bin;  localStorage.setItem('dt_binid',bin); }
   ['cfgApiKey','cfgBinId'].forEach(id => document.getElementById(id).value='');
   toast('JSONBin configurado — recarregue','ok');
+}
+
+/* ════════════════════════════════════════
+   CRÉDITOS
+════════════════════════════════════════ */
+function getCredits(charId) {
+  return DB.credits[charId] || 0;
+}
+function setCredits(charId, amount) {
+  DB.credits[charId] = Math.max(0, Math.round(amount));
+}
+function updateCreditsDisplay() {
+  if (role === 'char' && myCharId) {
+    const bal = getCredits(myCharId);
+    document.getElementById('creditsAmount').textContent = bal.toLocaleString('pt-BR');
+    document.getElementById('transferMyBalance').textContent = bal.toLocaleString('pt-BR');
+  }
+}
+
+/* ── Transfer modal ── */
+function openTransferModal() {
+  updateCreditsDisplay();
+  // popula destinos: todos os chars exceto o próprio
+  const sel = document.getElementById('transferTarget');
+  sel.innerHTML = Object.entries(DB.chars)
+    .filter(([id]) => id !== myCharId)
+    .map(([id, c]) => `<option value="${id}">${c.name} (${c.player})</option>`)
+    .join('');
+  if (!sel.options.length) sel.innerHTML = '<option value="">Nenhum outro agente</option>';
+  document.getElementById('transferAmount').value = '';
+  document.getElementById('transferMsg').textContent = '';
+  document.getElementById('transferModal').style.display = 'flex';
+}
+function closeTransferModal() { document.getElementById('transferModal').style.display = 'none'; }
+
+async function doTransfer() {
+  const toId  = document.getElementById('transferTarget').value;
+  const amount = parseInt(document.getElementById('transferAmount').value) || 0;
+  const msg   = document.getElementById('transferMsg');
+  if (!toId)    { msg.style.color='var(--red)'; msg.textContent='// DESTINO INVÁLIDO //'; return; }
+  if (amount <= 0) { msg.style.color='var(--red)'; msg.textContent='// VALOR DEVE SER POSITIVO //'; return; }
+  const myBal = getCredits(myCharId);
+  if (amount > myBal) { msg.style.color='var(--red)'; msg.textContent='// SALDO INSUFICIENTE //'; return; }
+  setCredits(myCharId, myBal - amount);
+  setCredits(toId, getCredits(toId) + amount);
+  updateCreditsDisplay();
+  msg.style.color = 'var(--green)';
+  msg.textContent = `// TRANSFERÊNCIA DE ₵${amount.toLocaleString('pt-BR')} CONCLUÍDA //`;
+  await dbSave();
+  setTimeout(closeTransferModal, 1800);
+}
+
+/* ── GM: lista de créditos ── */
+function renderCreditsList() {
+  const el  = document.getElementById('creditsList');
+  const ids = Object.keys(DB.chars);
+  if (!ids.length) { el.innerHTML='<div style="font-size:11px;color:var(--dim)">Nenhum personagem cadastrado.</div>'; return; }
+  el.innerHTML = ids.map(id => {
+    const c  = DB.chars[id];
+    const bal = getCredits(id);
+    return `<div class="credit-row">
+      <div class="credit-char-name">${c.name}</div>
+      <div class="credit-char-player">${c.player}</div>
+      <div class="credit-balance">₵${bal.toLocaleString('pt-BR')}</div>
+      <input class="credit-input" type="number" id="cr-${id}" placeholder="Valor" min="0">
+      <button class="btn ok" style="font-size:9px;padding:3px 8px" onclick="gmAddCredits('${id}',true)">+ ADD</button>
+      <button class="btn yellow" style="font-size:9px;padding:3px 8px" onclick="gmAddCredits('${id}',false)">= SET</button>
+    </div>`;
+  }).join('');
+}
+
+async function gmAddCredits(charId, addMode) {
+  const val = parseInt(document.getElementById('cr-'+charId).value);
+  if (isNaN(val) || val < 0) { toast('Valor inválido','err'); return; }
+  if (addMode) setCredits(charId, getCredits(charId) + val);
+  else         setCredits(charId, val);
+  document.getElementById('cr-'+charId).value = '';
+  renderCreditsList();
+  await dbSave();
+  toast(`₵ de ${DB.chars[charId].name} atualizados`,'ok');
+}
+
+/* ════════════════════════════════════════
+   MERCADOS
+════════════════════════════════════════ */
+let modalMarketId = null;
+let modalItemId   = null;
+
+/* ── Render mercados na página terminal ── */
+function renderMarkets() {
+  const container = document.getElementById('marketsContainer');
+  if (!DB.markets || !DB.markets.length) { container.innerHTML=''; return; }
+
+  container.innerHTML = DB.markets.map(mkt => {
+    if (!mkt.items || !mkt.items.length) {
+      if (role !== 'gm') return '';
+      return `<div class="market-section">
+        <div class="market-header">
+          <div class="market-name">⬡ ${mkt.name.toUpperCase()}</div>
+          ${role==='gm'?`<button class="btn danger" style="font-size:9px;padding:2px 8px" onclick="deleteMarket('${mkt.id}')">DELETAR</button>`:''}
+        </div>
+        <div class="market-desc">${mkt.desc}</div>
+        <div class="empty-state">[ Nenhum item neste mercado ]</div>
+      </div>`;
+    }
+
+    const myBal = role === 'char' ? getCredits(myCharId) : Infinity;
+    const itemsHtml = mkt.items.map(item => {
+      const canAfford = myBal >= item.price;
+      const outOfStock = item.stock === 0;
+      const imgHtml = item.img
+        ? `<img class="item-img" src="${item.img}" alt="${item.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+        : '';
+      const phHtml = `<div class="item-img-placeholder" ${item.img?'style="display:none"':''}>${item.icon||'📦'}</div>`;
+      const stockLabel = item.stock < 0 ? '∞ disponível' : item.stock === 0 ? 'ESGOTADO' : `${item.stock} restante(s)`;
+      return `<div class="item-card${outOfStock?' out-of-stock':''}" onclick="${outOfStock?'':` openItemModal('${mkt.id}','${item.id}')`}">
+        ${imgHtml}${phHtml}
+        <div class="item-body">
+          <div class="item-name">${item.name}</div>
+          <div class="item-desc-short">${item.desc}</div>
+          <div class="item-footer">
+            <div>
+              <div class="item-price${canAfford||role==='gm'?'':' cant-afford'}">₵${item.price.toLocaleString('pt-BR')}</div>
+              <div class="item-stock">${stockLabel}</div>
+            </div>
+            ${role==='gm'?`<button class="btn danger" style="font-size:9px;padding:2px 6px" onclick="event.stopPropagation();deleteItem('${mkt.id}','${item.id}')">✕</button>`:''}
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `<div class="market-section">
+      <div class="market-header">
+        <div class="market-name">⬡ ${mkt.name.toUpperCase()}</div>
+        ${role==='gm'?`<button class="btn danger" style="font-size:9px;padding:2px 8px" onclick="deleteMarket('${mkt.id}')">DELETAR MERCADO</button>`:''}
+      </div>
+      <div class="market-desc">${mkt.desc}</div>
+      <div class="market-grid">${itemsHtml}</div>
+    </div>`;
+  }).join('');
+}
+
+/* ── Item detail modal ── */
+function openItemModal(mktId, itemId) {
+  const mkt  = DB.markets.find(m => m.id === mktId);
+  const item = mkt?.items.find(i => i.id === itemId);
+  if (!item) return;
+  modalMarketId = mktId;
+  modalItemId   = itemId;
+
+  // imagem
+  const imgWrap = document.getElementById('itemModalImg');
+  if (item.img) {
+    imgWrap.innerHTML = `<img class="item-modal-img" src="${item.img}" alt="${item.name}" onerror="this.parentElement.innerHTML='<div class=item-modal-img-ph>${item.icon||'📦'}</div>'">`;
+  } else {
+    imgWrap.innerHTML = `<div class="item-modal-img-ph">${item.icon||'📦'}</div>`;
+  }
+
+  document.getElementById('itemModalName').textContent    = item.name;
+  document.getElementById('itemModalMarket').textContent  = '⬡ ' + mkt.name.toUpperCase();
+  document.getElementById('itemModalDesc').textContent    = item.desc;
+
+  const myBal     = role === 'char' ? getCredits(myCharId) : Infinity;
+  const canAfford = myBal >= item.price;
+  document.getElementById('itemModalPrice').textContent   = '₵ ' + item.price.toLocaleString('pt-BR');
+  document.getElementById('itemModalPrice').className     = 'item-modal-price' + (canAfford ? '' : ' cant-afford');
+  document.getElementById('itemModalStock').textContent   = item.stock < 0 ? 'Estoque ilimitado' : item.stock === 0 ? 'ESGOTADO' : `${item.stock} em estoque`;
+  document.getElementById('itemQty').value                = '1';
+  document.getElementById('checkoutConfirm').style.display = 'none';
+  document.getElementById('checkoutConfirm').textContent  = '';
+
+  // botão comprar: só para chars
+  const btnCO = document.getElementById('btnCheckout');
+  btnCO.style.display = role === 'char' ? '' : 'none';
+  btnCO.disabled      = !canAfford || item.stock === 0;
+
+  document.getElementById('itemModal').style.display = 'flex';
+}
+
+function closeItemModal() {
+  document.getElementById('itemModal').style.display = 'none';
+  modalMarketId = null; modalItemId = null;
+}
+
+function updateCheckoutPrice() {
+  if (!modalMarketId || !modalItemId) return;
+  const item = DB.markets.find(m=>m.id===modalMarketId)?.items.find(i=>i.id===modalItemId);
+  if (!item) return;
+  const qty   = parseInt(document.getElementById('itemQty').value) || 1;
+  const total = item.price * qty;
+  const myBal = getCredits(myCharId);
+  const el    = document.getElementById('itemModalPrice');
+  el.textContent = `₵ ${total.toLocaleString('pt-BR')} (${qty}×)`;
+  el.className   = 'item-modal-price' + (myBal >= total ? '' : ' cant-afford');
+  document.getElementById('btnCheckout').disabled = myBal < total || (item.stock !== -1 && qty > item.stock);
+}
+
+async function doCheckout() {
+  const mkt  = DB.markets.find(m => m.id === modalMarketId);
+  const item = mkt?.items.find(i => i.id === modalItemId);
+  if (!item || role !== 'char') return;
+  const qty   = parseInt(document.getElementById('itemQty').value) || 1;
+  const total = item.price * qty;
+  const myBal = getCredits(myCharId);
+  if (myBal < total) { toast('Saldo insuficiente','err'); return; }
+  if (item.stock !== -1 && qty > item.stock) { toast('Estoque insuficiente','err'); return; }
+
+  // debita créditos
+  setCredits(myCharId, myBal - total);
+  // reduz estoque
+  if (item.stock !== -1) item.stock -= qty;
+  // adiciona ao inventário do char
+  const c = DB.chars[myCharId];
+  c.gear = c.gear || [];
+  for (let i=0; i<qty; i++) c.gear.push({ name: item.name, tag: `₵${item.price.toLocaleString('pt-BR')}` });
+
+  updateCreditsDisplay();
+  await dbSave();
+  renderMarkets();
+
+  const confirm = document.getElementById('checkoutConfirm');
+  confirm.textContent = `// COMPRA CONCLUÍDA — ₵${total.toLocaleString('pt-BR')} DEBITADOS — ${qty}× ${item.name} adicionado(s) ao inventário //`;
+  confirm.style.display = 'block';
+  document.getElementById('btnCheckout').disabled = true;
+  toast(`${qty}× ${item.name} comprado(s)!`,'ok');
+
+  // atualiza ficha se estiver aberta
+  if (document.getElementById('myCharSheet').innerHTML) {
+    renderSheet('myCharSheet', myCharId, true, false);
+  }
+}
+
+/* ── GM: criar/deletar mercados ── */
+async function createMarket() {
+  const name = document.getElementById('mktName').value.trim();
+  const desc = document.getElementById('mktDesc').value.trim();
+  if (!name) { toast('Nome do mercado obrigatório','err'); return; }
+  DB.markets.push({ id:'mkt_'+Date.now(), name, desc, items:[] });
+  document.getElementById('mktName').value='';
+  document.getElementById('mktDesc').value='';
+  renderMarkets();
+  renderMarketAdminList();
+  populateMarketSelect();
+  await dbSave();
+  toast('Mercado criado','ok');
+}
+
+async function deleteMarket(mktId) {
+  if (!confirm('Deletar mercado e todos os seus itens?')) return;
+  DB.markets = DB.markets.filter(m => m.id !== mktId);
+  renderMarkets();
+  renderMarketAdminList();
+  populateMarketSelect();
+  await dbSave();
+}
+
+async function addItemToMarket() {
+  const mktId = document.getElementById('itemTargetMarket').value;
+  const name  = document.getElementById('itemName').value.trim();
+  const price = parseInt(document.getElementById('itemPrice').value) || 0;
+  if (!mktId) { toast('Selecione um mercado','err'); return; }
+  if (!name)  { toast('Nome do item obrigatório','err'); return; }
+  const mkt = DB.markets.find(m => m.id === mktId);
+  if (!mkt)  { toast('Mercado não encontrado','err'); return; }
+  mkt.items.push({
+    id:    'item_'+Date.now(),
+    name,
+    desc:  document.getElementById('itemDesc').value.trim(),
+    price,
+    stock: parseInt(document.getElementById('itemStock').value) ?? -1,
+    img:   document.getElementById('itemImg').value.trim(),
+    icon:  document.getElementById('itemIcon').value.trim() || '📦'
+  });
+  ['itemName','itemDesc','itemPrice','itemImg','itemIcon'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('itemStock').value='-1';
+  renderMarkets();
+  renderMarketAdminList();
+  await dbSave();
+  toast('Item adicionado','ok');
+}
+
+async function deleteItem(mktId, itemId) {
+  const mkt = DB.markets.find(m => m.id === mktId);
+  if (!mkt) return;
+  mkt.items = mkt.items.filter(i => i.id !== itemId);
+  renderMarkets();
+  renderMarketAdminList();
+  await dbSave();
+}
+
+function renderMarketAdminList() {
+  const el = document.getElementById('marketAdminList');
+  if (!DB.markets.length) { el.innerHTML='<div style="font-size:11px;color:var(--dim);margin-bottom:8px">Nenhum mercado criado ainda.</div>'; return; }
+  el.innerHTML = DB.markets.map(m => `
+    <div class="market-list-item">
+      <div class="market-list-name">⬡ ${m.name}</div>
+      <div class="market-list-items">${m.items.length} item(s) — ${m.desc}</div>
+      <button class="btn danger" style="font-size:9px;padding:2px 8px" onclick="deleteMarket('${m.id}')">✕</button>
+    </div>`).join('');
+}
+
+function populateMarketSelect() {
+  const sel = document.getElementById('itemTargetMarket');
+  if (!sel) return;
+  sel.innerHTML = DB.markets.length
+    ? DB.markets.map(m=>`<option value="${m.id}">${m.name}</option>`).join('')
+    : '<option value="">— crie um mercado primeiro —</option>';
 }
 
 /* ════════════════════════════════════════
